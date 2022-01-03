@@ -1,7 +1,12 @@
 # Feedback_App
 
 ### Introduction
-This App allows a user to give feedbacks to the daily class they are attending and everyday homework. 
+This App allows a user(students) to proved feedbacks for the daily classe they are attending and everyday homework. 
+* You can register a yourself (as student)
+* You can create a class, and check all the existing classes.
+* You can create a homework and check all the existing classes. 
+* Student can submit feedback to a class
+* Student can submit feed to the homework they get
 
 ER Diagram
 ![Feedback](https://user-images.githubusercontent.com/92175379/147987474-70295184-ac7d-464b-8e7f-639b160faab6.png)
@@ -18,11 +23,13 @@ ER Diagram
 * As a user, I should be able to read a homework.
 * As a user, I should be able to update a homework.
 
+## Classroom Feedback Model
 * As a user, I should be able to create a class feedback.
 * As a user, I should be able to read a class feedback.
 * As a user, I should be able to update a class feedback.
 * As a user, I should be able to delete a class feedback.
 
+## Homework Feedback Model
 * As a user, I should be able to create a homework feedback.
 * As a user, I should be able to read a homework feedback.
 * As a user, I should be able to update a homework feedback.
