@@ -6,14 +6,14 @@
 ER Diagram
 ![Feedback](https://user-images.githubusercontent.com/92175379/147987474-70295184-ac7d-464b-8e7f-639b160faab6.png)
 
-###User Stories
+### User Stories
 
-##Class Model
--1.As a user, I should be able to create a class.
--2.As a user, I should be able to read a class.
--3.As a user, I should be able to update a class.
+## Class Model
+* 1.As a user, I should be able to create a class.
+* 2.As a user, I should be able to read a class.
+* 3.As a user, I should be able to update a class.
 
-##Homework Model
+## Homework Model
 * 1. As a user, I should be able to create a homework.
 * 2. As a user, I should be able to read a homework.
 * 3. As a user, I should be able to update a homework.
