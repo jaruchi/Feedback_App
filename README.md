@@ -14,9 +14,9 @@ ER Diagram
 -3.As a user, I should be able to update a class.
 
 ##Homework Model
--1.As a user, I should be able to create a homework.
--2.As a user, I should be able to read a homework.
--3.As a user, I should be able to update a homework.
+* 1. As a user, I should be able to create a homework.
+* 2. As a user, I should be able to read a homework.
+* 3. As a user, I should be able to update a homework.
 
 -1.As a user, I should be able to create a class feedback.
 -2.As a user, I should be able to read a class feedback.
