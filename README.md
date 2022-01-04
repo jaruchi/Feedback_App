@@ -61,6 +61,7 @@ ER Diagram
 
 ### Class endpoint 
 | Request_Type| URL           |Request Body  |Request Header| Action       | Access       |
+| - | - | - | - | - | - |
 | GET   | api/class |none|Authorization Bearer TOKEN| get all class |private|
 |GET|api/class/{classid}|none |Authorization Bearer TOKEN|get a single class|private|
 |POST| api/class|class single feedback |Authorization Bearer TOKEN |create a single class|private|
@@ -69,6 +70,7 @@ ER Diagram
 
 ### Homework endpoint 
 | Request_Type| URL           |Request_Body  |Request_Header| Action       | Access       |
+| - | - | - | - | - | - |
 | GET   | api/homework |none|Authorization Bearer TOKEN| get all homework |private|
 |GET|api/homework/{homeworkid}|none |Authorization Bearer TOKEN|get a single homework |private|
 |POST| api/homework|homework single |Authorization Bearer TOKEN |create a single homework |private|
@@ -78,6 +80,7 @@ ER Diagram
 
 ### Homework Feedback endpoint 
 | Request_Type| URL           |Request_Body  |Request_Header| Action       | Access       |
+| - | - | - | - | - | - |
 | GET   | api/homeworkfeedback |none|Authorization Bearer TOKEN| get all homework feed|private|
 |GET|api/homeworkfeedback/{homeworkid}|none |Authorization Bearer TOKEN|get a single homework homework|private|
 |POST| api/homeworkfeedback|homework single feedback |Authorization Bearer TOKEN |create a single homework feed|private|
@@ -86,6 +89,7 @@ ER Diagram
 
 ### User Auth endpoint 
 | Request_Type| URL           |Request_Body  |Request_Header| Action       | Access       |
+| - | - | - | - | - | - |
 | GET   | auth/user |none|Authorization Bearer TOKEN| get all user |private|
 |GET|auth/user/{userid}|none |Authorization Bearer TOKEN|get a single user |private|
 |POST| auth/user/register |register user |Authorization Bearer TOKEN |register user  |private|
