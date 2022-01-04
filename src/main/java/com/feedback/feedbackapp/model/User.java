@@ -3,25 +3,30 @@ package com.feedback.feedbackapp.model;
 import javax.persistence.*;
 
 @Entity
-@Table (name = "uUser")
+@Table (name = "users")
 public class User {
     @Id
     @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @Column
     private String firstname;
+
     @Column
     private String lastname;
+
     @Column
     private String role;
+
     @Column
     private String emailAddress;
+
     @Column
     private String userName;
+
     @Column
     private String password;
-
 
     public User() {
     }
