@@ -50,7 +50,8 @@ ER Diagram
 
 ## EndPoint
 
-| Request Type| URL           |Request Body  |Request Header| Action       | Access       |
+| Request_Type | URL           | Body  | Header| Action       | Access       |
+| - | - | - | - | - | - |
 | GET   | api/classfeedback   |none|Authorization Bearer TOKEN| get all class feed|private|
 |GET|api/classfeedback/{classid}|none |Authorization Bearer TOKEN|get a single feed|private|
 |POST| api/classfeedback|class single feedback |Authorization Bearer TOKEN |post a single feed|private|
