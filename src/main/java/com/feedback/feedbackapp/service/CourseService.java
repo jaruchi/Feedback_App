@@ -21,6 +21,8 @@ public class CourseService {
     }
 
     public List<Course> getCourses() {
+        LOGGER.info("calling getCategories method from service");
+
     }
 
     public Course getCourse(Long courseId) {
