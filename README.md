@@ -48,9 +48,10 @@ ER Diagram
 - As a user(student), I should be able to delete a homework feedback.
 - As a user(instructor), can see feedback for a homework by all students.(future)
 
+## EndPoint
 
 | Request Type  | URL           |Request Body  |Request Header| Action       | Access       |
 | ------------- | ------------- |------------- |------------- |------------- |------------- |
-| Content Cell  | Content Cell  |------------- |------------- |------------- |------------- |
-| Content Cell  | Content Cell  |------------- |------------- |------------- |------------- |
+| ------------- | ------------- |------------- |------------- |------------- |------------- |
+| ------------- | --------------|------------- |------------- |------------- |------------- |
 | ------------- | ------------- |------------- |------------- |------------- |------------- |
