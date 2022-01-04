@@ -51,12 +51,12 @@ ER Diagram
 ## EndPoint
 
 ### Class Feedback endpoint 
-| Request_Type| URL           |Request Body  |Request Header| Action       | Access       |
-| GET   | api/classfeedback   |none|Authorization Bearer TOKEN| get all class feed|private|
-|GET|api/classfeedback/{classid}|none |Authorization Bearer TOKEN|get a single class feed|private|
-|POST| api/classfeedback|class single feedback |Authorization Bearer TOKEN |create a single feed|private|
-|PUT|api/classfeedback/{classid}|none|Authorization Bearer TOKEN|feedback info|private|
-|DELETE | api/classfeedback/{classid}|none | Authorization Bearer TOKEN| Delete single class feed |private|
+| Request_Type| URL                       |Request Body  |Request Header            | Action                 | Access       |
+| GET         | api/classfeedback         |none          |Authorization Bearer TOKEN| get all class feed     |private       |
+|GET          |api/classfeedback/{classid}|none          |Authorization Bearer TOKEN|get a single class feed |private       |
+|POST         | api/classfeedback         |body          |Authorization Bearer TOKEN|create a single feed    |private       |
+|PUT          |api/classfeedback/{classid}|body          |Authorization Bearer TOKEN|feedback info           |private       |
+|DELETE       |api/classfeedback/{classid}|none          |Authorization Bearer TOKEN|Delete single class feed|private       |
 
 ### Class endpoint 
 | Request_Type| URL           |Request Body  |Request Header| Action       | Access       |
