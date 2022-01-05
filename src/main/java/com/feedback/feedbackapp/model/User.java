@@ -8,7 +8,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table (name = "User")
+@Table (name = "users")
 public class User {
     @Id
     @Column
@@ -39,10 +39,12 @@ public class User {
     @JoinColumn(name = "profile_id", referencedColumnName = "id")
     private UserProfile userProfile;
 
-
+    // user can have more than one coursefeedback
     @OneToMany(mappedBy = "user")
     @LazyCollection(LazyCollectionOption.FALSE)
-    private List<User> courseList;
+    private List<CourseFeedBack> courseFeedBackList;
+
+
 
 //Undo when merge
 

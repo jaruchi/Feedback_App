@@ -15,7 +15,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.context.WebApplicationContext;
-//import org.springframework.web.context.WebApplicationContext;pto.password.PasswordEncoder;
 
 @EnableWebSecurity
 public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
@@ -29,7 +28,6 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private JwtRequestFilter jwtRequestFilter;
-
 
     @Bean
     public PasswordEncoder encoder() {
@@ -64,5 +62,4 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
         return (MyUserDetails) SecurityContextHolder.getContext().getAuthentication()
                 .getPrincipal();
     }
-
 }

@@ -22,9 +22,9 @@ public class UserProfile {
     @Column
     private String profileDescription;
 
-    @JsonIgnore
-    @OneToOne(mappedBy = "userProfile")
-    private User user;
+//    @JsonIgnore
+//    @OneToOne(mappedBy = "userProfile")
+//    private User user;
 
     public Long getId() {
         return id;
@@ -58,11 +58,11 @@ public class UserProfile {
         this.profileDescription = profileDescription;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
+//    public User getUser() {
+//        return user;
+//    }
+//
+//    public void setUser(User user) {
+//        this.user = user;
+//    }
 }

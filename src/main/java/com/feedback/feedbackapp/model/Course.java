@@ -1,5 +1,6 @@
 package com.feedback.feedbackapp.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
@@ -27,10 +28,15 @@ public class Course {
     @Column
     private String topic;
 
-//    // course can have more than one feedback
-//    @OneToMany(mappedBy = "course")
-//    @LazyCollection(LazyCollectionOption.FALSE)
-//    private List<CourseFeedBack> courseFeedBackList;
+    // course can have more than one feedback
+    @OneToMany(mappedBy = "course")
+    @LazyCollection(LazyCollectionOption.FALSE)
+    private List<CourseFeedBack> courseFeedBackList;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    @JsonIgnore
+    private User user;
 
     public Course() {
     }
@@ -83,11 +89,11 @@ public class Course {
         this.week = week;
     }
 
-//    public List<CourseFeedBack> getCourseFeedBackList() {
-//        return courseFeedBackList;
-//    }
-//
-//    public void setCourseFeedBackList(List<CourseFeedBack> courseFeedBackList) {
-//        this.courseFeedBackList = courseFeedBackList;
-//    }
+    public List<CourseFeedBack> getCourseFeedBackList() {
+        return courseFeedBackList;
+    }
+
+    public void setCourseFeedBackList(List<CourseFeedBack> courseFeedBackList) {
+        this.courseFeedBackList = courseFeedBackList;
+    }
 }

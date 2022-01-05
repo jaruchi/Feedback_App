@@ -31,6 +31,13 @@ public class CourseFeedBack {
     @JsonIgnore
     private Course course;
 
+
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    @JsonIgnore
+    private User user;
+
     public CourseFeedBack() {
     }
 
