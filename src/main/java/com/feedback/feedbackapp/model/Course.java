@@ -21,7 +21,6 @@ public class Course {
     private String topic;
 
     public Course() {
-
     }
 
     public Course(Long id, String startDate, String endDate, String topic) {

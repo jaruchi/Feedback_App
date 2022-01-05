@@ -96,3 +96,5 @@ ER Diagram
 |POST| auth/user/login |login user |Authorization Bearer TOKEN |Login User |private|
 |PUT| auth/user/{userid}|none|Authorization Bearer TOKEN|update user|private|
 |DELETE | auth/user/{userid}|none | Authorization Bearer TOKEN| Delete user|private|
+
+
