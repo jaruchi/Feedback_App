@@ -1,9 +1,14 @@
 package com.feedback.feedbackapp.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
-@Table (name = "users")
+@Table (name = "User")
 public class User {
     @Id
     @Column
@@ -11,34 +16,58 @@ public class User {
     private Long id;
 
     @Column
-    private String firstname;
+    private String firstName;
 
     @Column
-    private String lastname;
+    private String lastName;
+
 
     @Column
     private String role;
 
-    @Column
+    @Column(unique = true)
     private String emailAddress;
 
     @Column
     private String userName;
 
     @Column
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
 
-    public User() {
-    }
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "profile_id", referencedColumnName = "id")
+    private UserProfile userProfile;
 
-    public User(Long id, String firstname, String lastname, String role, String emailAddress, String userName, String password) {
-        this.id = id;
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.role = role;
-        this.emailAddress = emailAddress;
-        this.userName = userName;
-        this.password = password;
+
+    @OneToMany(mappedBy = "user")
+    @LazyCollection(LazyCollectionOption.FALSE)
+    private List<User> courseList;
+
+//Undo when merge
+
+//    @OneToMany(mappedBy = "user")
+//    @LazyCollection(LazyCollectionOption.FALSE)
+//    private List<Course> courseList;
+//
+//
+//    public User(List<Course> courseList) {
+//        this.courseList = couseList;
+//    }
+//
+//    public User(Long id, String firstname, String lastname, String role, String emailAddress, String userName, String password, List<Course> categoryList) {
+//        this.id = id;
+//        this.courseList = categoryList;
+//        this.firstName = firstName;
+//        this.lastName = lastName;
+//        this.role = role;
+//        this.emailAddress = emailAddress;
+//        this.userName = userName;
+//        this.password = password;
+//    }
+
+    public User() {
+
     }
 
     public Long getId() {
@@ -50,19 +79,19 @@ public class User {
     }
 
     public String getFirstname() {
-        return firstname;
+        return firstName;
     }
 
     public void setFirstname(String firstname) {
-        this.firstname = firstname;
+        this.firstName = firstname;
     }
 
     public String getLastname() {
-        return lastname;
+        return lastName;
     }
 
     public void setLastname(String lastname) {
-        this.lastname = lastname;
+        this.lastName = lastname;
     }
 
     public String getRole() {
