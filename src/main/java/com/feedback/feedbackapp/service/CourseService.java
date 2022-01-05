@@ -57,6 +57,7 @@ public class CourseService {
             } else {
                     course.get().setStartDate(courseObject.getStartDate());
                     course.get().setEndDate(courseObject.getEndDate());
+                    course.get().setWeek(courseObject.getWeek());
                     course.get().setTopic(courseObject.getTopic());
                     return courseRepository.save(course.get());
                 }
