@@ -37,13 +37,12 @@ public class JwtRequestFilter extends OncePerRequestFilter {
 
         if (AuthorizationHeader != null && AuthorizationHeader.startsWith("Bearer ")) {
             jwt = AuthorizationHeader.substring(7);
-            username = getJwtUtils().extractUsername(jwt);
+            username = jwtUtils.extractUsername(jwt);
         }
-
 
         if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
             UserDetails userDetails = this.myUserDetailsService.loadUserByUsername(username);
-            if (getJwtUtils().validateToken(jwt, userDetails)) {
+            if (jwtUtils.validateToken(jwt, userDetails)) {
                 UsernamePasswordAuthenticationToken
                         usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(
                         userDetails, null, userDetails.getAuthorities());
@@ -52,13 +51,5 @@ public class JwtRequestFilter extends OncePerRequestFilter {
             }
         }
         filterChain.doFilter(httpServletRequest, httpServletResponse);
-    }
-
-    public JWTUtils getJwtUtils() {
-        return jwtUtils;
-    }
-
-    public void setJwtUtils(JWTUtils jwtUtils) {
-        this.jwtUtils = jwtUtils;
     }
 }
