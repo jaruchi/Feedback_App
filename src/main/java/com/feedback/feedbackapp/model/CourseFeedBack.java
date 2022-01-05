@@ -1,8 +1,11 @@
 package com.feedback.feedbackapp.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Optional;
 
 @Entity
@@ -28,15 +31,7 @@ public class CourseFeedBack {
     @JsonIgnore
     private Course course;
 
-    public CourseFeedBack(Long id, String comments, Integer rating) {
-        this.id = id;
-        this.title = title;
-        this.comments = comments;
-        this.rating = rating;
-    }
-
     public CourseFeedBack() {
-
     }
 
     public Long getId() {

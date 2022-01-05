@@ -52,18 +52,18 @@ public class CourseService {
 
         Optional<Course> course = courseRepository.findById(courseId);
         if (course.isPresent()) {
-                if (courseObject.getTopic().equals(course.get().getTopic())) {
+            if (courseObject.getTopic().equals(course.get().getTopic())) {
                 throw new InformationExistException("Course already exists");
             } else {
-                    course.get().setStartDate(courseObject.getStartDate());
-                    course.get().setEndDate(courseObject.getEndDate());
-                    course.get().setWeek(courseObject.getWeek());
-                    course.get().setTopic(courseObject.getTopic());
-                    return courseRepository.save(course.get());
-                }
-            } else {
-                    throw new InformationNotFoundException("course with id " + courseId + " not found");
-                }
+                course.get().setStartDate(courseObject.getStartDate());
+                course.get().setEndDate(courseObject.getEndDate());
+                course.get().setWeek(courseObject.getWeek());
+                course.get().setTopic(courseObject.getTopic());
+                return courseRepository.save(course.get());
+            }
+        } else {
+            throw new InformationNotFoundException("course with id " + courseId + " not found");
+        }
     }
 
     public Optional<Course> deleteCourse(Long courseId) {

@@ -1,6 +1,10 @@
 package com.feedback.feedbackapp.model;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "course")
@@ -22,6 +26,11 @@ public class Course {
 
     @Column
     private String topic;
+
+//    // course can have more than one feedback
+//    @OneToMany(mappedBy = "course")
+//    @LazyCollection(LazyCollectionOption.FALSE)
+//    private List<CourseFeedBack> courseFeedBackList;
 
     public Course() {
     }
@@ -73,4 +82,12 @@ public class Course {
     public void setWeek(Integer week) {
         this.week = week;
     }
+
+//    public List<CourseFeedBack> getCourseFeedBackList() {
+//        return courseFeedBackList;
+//    }
+//
+//    public void setCourseFeedBackList(List<CourseFeedBack> courseFeedBackList) {
+//        this.courseFeedBackList = courseFeedBackList;
+//    }
 }

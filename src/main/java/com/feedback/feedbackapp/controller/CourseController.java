@@ -30,24 +30,24 @@ public class CourseController {
     }
 
     //to get a single course
-    // http://localhost:9092/api/courses/1
-    @GetMapping(path = "/courses/{courseId}")
+    // http://localhost:9092/api/course/1
+    @GetMapping(path = "/course/{courseId}")
     public Optional getCourse(@PathVariable Long courseId){
         LOGGER.info("calling getCourse method from controller");
         return courseService.getCourse(courseId);
     }
 
     //to create a course
-    // http://localhost:9092/api/courses
-    @PostMapping(path = "/courses")
+    // http://localhost:9092/api/course
+    @PostMapping(path = "/course")
     public Course createCourse(@RequestBody Course courseObject){
         LOGGER.info("calling getCourse method from controller");
         return courseService.createCourse(courseObject);
     }
 
     //to update a course
-    // http://localhost:9092/api/courses/1
-    @PutMapping(path = "/courses/{courseId}")
+    // http://localhost:9092/api/course/1
+    @PutMapping(path = "/course/{courseId}")
     public Course updateCourse(@PathVariable(value = "courseId") Long courseId,
                                @RequestBody Course courseObject){
         LOGGER.info("calling updateCourse method from controller");
@@ -55,8 +55,8 @@ public class CourseController {
     }
 
     //to delete a course
-    // http://localhost:9092/api/courses/1
-    @DeleteMapping(path="/courses/{courseId}")
+    // http://localhost:9092/api/course/1
+    @DeleteMapping(path="/course/{courseId}")
     public Optional<Course> deleteCourse(@PathVariable(value = "courseId") Long courseId){
         LOGGER.info("calling deleteCourse method from controller");
         return courseService.deleteCourse(courseId);
