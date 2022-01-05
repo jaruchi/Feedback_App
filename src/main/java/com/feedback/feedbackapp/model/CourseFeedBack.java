@@ -3,6 +3,7 @@ package com.feedback.feedbackapp.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.Optional;
 
 @Entity
 @Table(name = "coursefeedback")
@@ -12,6 +13,9 @@ public class CourseFeedBack {
     @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column
+    private String title;
 
     @Column
     private String comments;
@@ -26,6 +30,7 @@ public class CourseFeedBack {
 
     public CourseFeedBack(Long id, String comments, Integer rating) {
         this.id = id;
+        this.title = title;
         this.comments = comments;
         this.rating = rating;
     }
@@ -64,5 +69,13 @@ public class CourseFeedBack {
 
     public void setCourse(Course course) {
         this.course = course;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 }

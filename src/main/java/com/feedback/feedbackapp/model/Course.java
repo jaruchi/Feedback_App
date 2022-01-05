@@ -18,6 +18,9 @@ public class Course {
     private String endDate;
 
     @Column
+    private Integer week;
+
+    @Column
     private String topic;
 
     public Course() {
@@ -27,6 +30,7 @@ public class Course {
         this.id = id;
         this.startDate = startDate;
         this.endDate = endDate;
+        this.week = week;
         this.topic = topic;
     }
 
@@ -60,5 +64,13 @@ public class Course {
 
     public void setEndDate(String endDate) {
         this.endDate = endDate;
+    }
+
+    public Integer getWeek() {
+        return week;
+    }
+
+    public void setWeek(Integer week) {
+        this.week = week;
     }
 }
