@@ -60,6 +60,7 @@ public class UserService {
             String description = userObject.getRole();
             UserProfile userProfileObject = new UserProfile(firstName, lastName, description);
             profileRepository.save(userProfileObject);
+            userObject.setUserProfile(userProfileObject);
             return userRepository.save(userObject);
         }
         else {

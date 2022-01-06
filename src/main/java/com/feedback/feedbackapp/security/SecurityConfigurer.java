@@ -1,5 +1,6 @@
 package com.feedback.feedbackapp.security;
 
+import com.feedback.feedbackapp.service.MyUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Scope;

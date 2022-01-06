@@ -22,14 +22,18 @@ public class UserProfile {
     @Column
     private String profileDescription;
 
-    @JsonIgnore
     @OneToOne(mappedBy = "userProfile")
+    @JsonIgnore
     private User user;
 
     public UserProfile(String firstName, String lastName, String profileDescription) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.profileDescription = profileDescription;
+    }
+
+    public UserProfile() {
+
     }
 
     public Long getId() {

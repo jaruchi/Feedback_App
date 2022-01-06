@@ -1,6 +1,7 @@
-package com.feedback.feedbackapp.security;
+package com.feedback.feedbackapp.service;
 
 import com.feedback.feedbackapp.model.User;
+import com.feedback.feedbackapp.security.MyUserDetails;
 import com.feedback.feedbackapp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
