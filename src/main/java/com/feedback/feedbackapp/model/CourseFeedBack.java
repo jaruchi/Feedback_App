@@ -1,12 +1,10 @@
 package com.feedback.feedbackapp.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
-import java.util.List;
-import java.util.Optional;
+
 
 @Entity
 @Table(name = "coursefeedback")
@@ -28,10 +26,8 @@ public class CourseFeedBack {
 
     @ManyToOne
     @JoinColumn(name = "course_id")
-    @JsonIgnore
+    //@JsonIgnore   ///Commenting so that we can get course information for the feedback
     private Course course;
-
-
 
     @ManyToOne
     @JoinColumn(name = "user_id")
@@ -80,4 +76,13 @@ public class CourseFeedBack {
     public void setTitle(String title) {
         this.title = title;
     }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
 }

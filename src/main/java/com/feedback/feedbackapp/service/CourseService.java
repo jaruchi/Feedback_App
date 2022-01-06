@@ -4,7 +4,9 @@ import com.feedback.feedbackapp.exception.InformationExistException;
 import com.feedback.feedbackapp.exception.InformationNotFoundException;
 import com.feedback.feedbackapp.model.Course;
 import com.feedback.feedbackapp.repository.CourseRepository;
+import com.feedback.feedbackapp.security.MyUserDetails;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -39,6 +41,10 @@ public class CourseService {
 
     public Course createCourse(Course courseObject) {
         LOGGER.info("calling createCourse method from service");
+
+        MyUserDetails userDetails =
+                (MyUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        // TODO: Check for user role
         Course course = courseRepository.findByTopic(courseObject.getTopic());
         if (course != null) {
             throw new InformationExistException("course with topic " + course.getTopic() + " already exists");
@@ -70,7 +76,7 @@ public class CourseService {
         LOGGER.info("calling deleteCourse method from service");
 
         Optional<Course> course = courseRepository.findById(courseId);
-
+        // TODO: Check for user role
         if (((Optional<?>) course).isPresent()) {
             courseRepository.deleteById(courseId);
             return course;

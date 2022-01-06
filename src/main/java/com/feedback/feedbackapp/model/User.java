@@ -21,7 +21,6 @@ public class User {
     @Column
     private String lastName;
 
-
     @Column
     private String role;
 
@@ -43,30 +42,6 @@ public class User {
     @OneToMany(mappedBy = "user")
     @LazyCollection(LazyCollectionOption.FALSE)
     private List<CourseFeedBack> courseFeedBackList;
-
-
-
-//Undo when merge
-
-//    @OneToMany(mappedBy = "user")
-//    @LazyCollection(LazyCollectionOption.FALSE)
-//    private List<Course> courseList;
-//
-//
-//    public User(List<Course> courseList) {
-//        this.courseList = couseList;
-//    }
-//
-//    public User(Long id, String firstname, String lastname, String role, String emailAddress, String userName, String password, List<Course> categoryList) {
-//        this.id = id;
-//        this.courseList = categoryList;
-//        this.firstName = firstName;
-//        this.lastName = lastName;
-//        this.role = role;
-//        this.emailAddress = emailAddress;
-//        this.userName = userName;
-//        this.password = password;
-//    }
 
     public User() {
 

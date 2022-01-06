@@ -2,8 +2,10 @@ package com.feedback.feedbackapp.controller;
 
 import com.feedback.feedbackapp.model.Course;
 import com.feedback.feedbackapp.model.CourseFeedBack;
+import com.feedback.feedbackapp.security.MyUserDetails;
 import com.feedback.feedbackapp.service.CourseFeedBackService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,24 +24,30 @@ public class CourseFeedBackController {
         this.courseFeedBackService = courseFeedBackService;
     }
 
-    //to get all the course feedbacks for a course
-    // http://localhost:9092/api/coursefeedbacks/course/1
-    @GetMapping(path = "/coursefeedback/course/{courseId}")
-    public List<CourseFeedBack> getCourseFeedBacks(@PathVariable(value = "courseId") Long courseId) {
+
+    //to get all the course feedbacks
+    // http://localhost:9092/api/coursefeedbacks/
+    @GetMapping(path = "/coursefeedbacks/course/1")
+    public List<CourseFeedBack> getCourseFeedBacksByCourse(@PathVariable(value = "courseId") Long courseId ) {
         LOGGER.info("calling getCourseFeedBacks method from controller");
-        return courseFeedBackService.getCourseFeedBacks(courseId);
+        return courseFeedBackService.getCourseFeedBacksByCourse(courseId);
+    }
+
+    //to get all the course feedbacks
+    // http://localhost:9092/api/coursefeedbacks/
+    @GetMapping(path = "/coursefeedbacks")
+    public List<CourseFeedBack> getCourseFeedBacks( ) {
+        LOGGER.info("calling getCourseFeedBacks method from controller");
+        return courseFeedBackService.getCourseFeedBacks();
     }
 
     //to get a single course feedback for a course
-    // http://localhost:9092/api/coursefeedback/1/course/1
-    @GetMapping(path = "/coursefeedback/{courseFeedBackId}/course/{courseId}")
-    public CourseFeedBack getCourseFeedBack(@PathVariable(value = "courseId") Long courseId,
-                                            @PathVariable(value = "courseFeedBackId") Long courseFeedBackId) {
+    // http://localhost:9092/api/coursefeedback/course/1
+    @GetMapping(path = "/coursefeedback/course/{courseId}")
+    public CourseFeedBack getCourseFeedBack(@PathVariable(value = "courseId") Long courseId) {
         LOGGER.info("calling getCourseFeedBack method from controller");
-        return courseFeedBackService.getCourseFeedBack(courseId, courseFeedBackId);
+        return courseFeedBackService.getCourseFeedBack(courseId);
     }
-
-    //////NEED TO CHECK
 
     //to create a course feedback for a course
     // http://localhost:9092/api/coursefeedback/course/2/
@@ -51,21 +59,19 @@ public class CourseFeedBackController {
     }
 
     //to update a course feedback for a course
-    // http://localhost:9092/api/coursefeedback/1/course/1
-    @PutMapping(path = "/coursefeedback/{courseFeedBackId}/course/{courseId}")
+    // http://localhost:9092/api/coursefeedback/course/1
+    @PutMapping(path = "/coursefeedback/course/{courseId}")
     public CourseFeedBack updateCourseFeedBack(@PathVariable(value = "courseId") Long courseId,
-                                               @PathVariable(value = "courseFeedBackId") Long courseFeedBackId,
                                                @RequestBody CourseFeedBack courseFeedBackObject) {
         LOGGER.info("calling updateCourseFeedBack method from controller");
-        return courseFeedBackService.updateCourseFeedBack(courseId, courseFeedBackId, courseFeedBackObject);
+        return courseFeedBackService.updateCourseFeedBack(courseId, courseFeedBackObject);
     }
 
     //to delete a course feedback for a course
     // http://localhost:9092/api/coursefeedback/1/course/1
-    @DeleteMapping(path = "/coursefeedback/{courseFeedBackId}/course/{course}")
-    public Optional<CourseFeedBack> deleteCourseFeedBack(@PathVariable(value = "courseId") Long courseId,
-                                                         @PathVariable(value = "courseFeedBackId") Long courseFeedBackId) {
+    @DeleteMapping(path = "/coursefeedback/course/{courseId}")
+    public Optional<CourseFeedBack> deleteCourseFeedBack(@PathVariable(value = "courseId") Long courseId) {
         LOGGER.info("calling deleteCourseFeedBack method from controller");
-        return courseFeedBackService.deleteCourseFeedBack(courseId, courseFeedBackId);
+        return courseFeedBackService.deleteCourseFeedBack(courseId);
     }
 }

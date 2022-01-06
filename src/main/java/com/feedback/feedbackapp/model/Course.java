@@ -29,9 +29,12 @@ public class Course {
     private String topic;
 
     // course can have more than one feedback
-    @OneToMany(mappedBy = "course")
-    @LazyCollection(LazyCollectionOption.FALSE)
-    private List<CourseFeedBack> courseFeedBackList;
+//    @OneToMany(mappedBy = "course")
+//    @LazyCollection(LazyCollectionOption.FALSE)
+//    private List<CourseFeedBack> courseFeedBackList;
+    // We don't need list of feedback as part of course model BECAUSE a course should not list all its feedback as it
+    // is restricted by user role.
+    // course endpoints are not/should not provide information about course feedbacks.
 
     @ManyToOne
     @JoinColumn(name = "user_id")
@@ -89,11 +92,11 @@ public class Course {
         this.week = week;
     }
 
-    public List<CourseFeedBack> getCourseFeedBackList() {
-        return courseFeedBackList;
-    }
-
-    public void setCourseFeedBackList(List<CourseFeedBack> courseFeedBackList) {
-        this.courseFeedBackList = courseFeedBackList;
-    }
+//    public List<CourseFeedBack> getCourseFeedBackList() {
+//        return courseFeedBackList;
+//    }
+//
+//    public void setCourseFeedBackList(List<CourseFeedBack> courseFeedBackList) {
+//        this.courseFeedBackList = courseFeedBackList;
+//    }
 }
