@@ -19,6 +19,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
 import java.util.logging.Logger;
 
 @Service
@@ -79,5 +80,16 @@ public class UserService {
         final UserDetails userDetails = userDetailsService.loadUserByUsername(loginRequest.getEmail());
         final String jwt = jwtUtils.generateToken(userDetails);
         return ResponseEntity.ok(new LoginResponse(jwt));
+    }
+
+
+    public User getUserProfile() {
+       MyUserDetails userDetails =
+                (MyUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        Optional<User> user = userRepository.findById(userDetails.getUser().getId());
+        //Optional<User> user = userRepository.findByIdAndUserProfileId(userDetails.getUser().getId(), profileId);
+
+        return user.get();
     }
 }

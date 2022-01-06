@@ -3,7 +3,6 @@ package com.feedback.feedbackapp.service;
 import com.feedback.feedbackapp.exception.InformationExistException;
 import com.feedback.feedbackapp.exception.InformationNotFoundException;
 import com.feedback.feedbackapp.model.Course;
-import com.feedback.feedbackapp.model.CourseFeedBack;
 import com.feedback.feedbackapp.repository.CourseRepository;
 import com.feedback.feedbackapp.security.MyUserDetails;
 import org.springframework.beans.factory.annotation.Autowired;
