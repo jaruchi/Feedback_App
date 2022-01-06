@@ -35,10 +35,15 @@ public class UserController {
         return userService.loginUser(loginRequest);
     }
 
-    @GetMapping("/profile")
-    public ResponseEntity<?> retrieveUser(@RequestBody RetrieveUser retrieveUser){
+    @GetMapping("/profile/{profileid}")
+    public User getUserProfile(@PathVariable(value = "profileId") Long profileId){
         LOGGER.info("Retrieving info");
-        return userService.retrieveUser(retrieveUser);
+        return userService.getUserProfile(profileId);
+
+//    @GetMapping("/profile/")
+//    public ResponseEntity<?> retrieveUser(@RequestBody RetrieveUser retrieveUser){
+//        LOGGER.info("Retrieving info");
+//        return userService.retrieveUser(retrieveUser);
     }
 
 }

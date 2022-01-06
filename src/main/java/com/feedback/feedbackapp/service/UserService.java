@@ -82,12 +82,20 @@ public class UserService {
     }
 
 
-    public  ResponseEntity <?> retrieveUser(RetrieveUser retrieveUser){
-        if (ProfileRepository.existsBy)
+//    public  ResponseEntity <?> retrieveUser(RetrieveUser retrieveUser){
+//        if (profileRepository.existsByEmailAddress(
+//    }
+
+
+    public User getUserProfile(Long profileId) {
+        MyUserDetails userDetails =
+                (MyUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        Optional<User> user = userRepository.findByIdAndprofileId(userDetails.getUser().getId(), profileId);
+
+        return (User) userRepository.findAll();
+
+
+
     }
-
-
-
-
-
 }

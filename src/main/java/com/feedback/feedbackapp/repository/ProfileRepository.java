@@ -12,7 +12,7 @@ import java.util.Optional;
 @Repository
 public interface ProfileRepository extends JpaRepository<UserProfile, Long> {
     Optional<UserProfile> findById(Long userId);
-    boolean existsByEmailAddress(String userEmailAddress);
+//    boolean existsByEmailAddress(String userEmailAddress);
 
     User findUserByEmailAddress(String userEmailAddress);
 }
