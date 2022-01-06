@@ -1,11 +1,8 @@
 package com.feedback.feedbackapp.controller;
 
-import com.feedback.feedbackapp.model.Course;
 import com.feedback.feedbackapp.model.CourseFeedBack;
-import com.feedback.feedbackapp.security.MyUserDetails;
 import com.feedback.feedbackapp.service.CourseFeedBackService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

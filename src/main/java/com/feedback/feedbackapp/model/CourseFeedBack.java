@@ -26,7 +26,8 @@ public class CourseFeedBack {
 
     @ManyToOne
     @JoinColumn(name = "course_id")
-    //@JsonIgnore   ///Commenting so that we can get course information for the feedback
+    //@JsonIgnore   ///Commenting so that we can get course information in the feedback. It was use to avoid
+    // recursionwith Course.CourseFeedBackList
     private Course course;
 
     @ManyToOne

@@ -6,10 +6,7 @@ import com.feedback.feedbackapp.model.request.LoginRequest;
 import com.feedback.feedbackapp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.logging.Logger;
 
@@ -37,10 +34,11 @@ public class UserController {
         return userService.loginUser(loginRequest);
     }
 
-//    @PostMapping("/profile")
-//    public UserProfile createProfile(@RequestBody UserProfile user) {
-//        LOGGER.info("Calling createProfile method from Controller!");
-//        return userService.createProfile(user);
+    @GetMapping("/profile")
+    public User getUserProfile() {
+        LOGGER.info("Retrieving info");
+        return userService.getUserProfile();
+    }
 }
 
 

@@ -13,8 +13,4 @@ public interface CourseFeedBackRepository extends JpaRepository<CourseFeedBack,L
     List<CourseFeedBack> findByUserId(Long userId);
 
     Optional<CourseFeedBack> findByUserIdAndCourseId(Long userId, Long courseId);
-    //CourseFeedBack findByIdAndUserId(Long courseFeedBackId, Long userId);
-
-
-    Optional<CourseFeedBack> findByTitle(String title);
 }

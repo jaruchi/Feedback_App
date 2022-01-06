@@ -1,5 +1,6 @@
 package com.feedback.feedbackapp.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
@@ -36,16 +37,18 @@ public class User {
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "profile_id", referencedColumnName = "id")
+    @JsonIgnore
     private UserProfile userProfile;
 
-    // user can have more than one coursefeedback
-    @OneToMany(mappedBy = "user")
-    @LazyCollection(LazyCollectionOption.FALSE)
-    private List<CourseFeedBack> courseFeedBackList;
+//    // user can have more than one coursefeedback
+//    @OneToMany(mappedBy = "user")
+//    @LazyCollection(LazyCollectionOption.FALSE)
+//    private List<CourseFeedBack> courseFeedBackList;
 
     public User() {
 
     }
+
 
     public Long getId() {
         return id;
@@ -101,5 +104,13 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public UserProfile getUserProfile() {
+        return userProfile;
+    }
+
+    public void setUserProfile(UserProfile userProfile) {
+        this.userProfile = userProfile;
     }
 }
