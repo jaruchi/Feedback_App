@@ -3,13 +3,11 @@ package com.feedback.feedbackapp.controller;
 import com.feedback.feedbackapp.model.User;
 import com.feedback.feedbackapp.model.UserProfile;
 import com.feedback.feedbackapp.model.request.LoginRequest;
+import com.feedback.feedbackapp.model.retrieve.RetrieveUser;
 import com.feedback.feedbackapp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.logging.Logger;
 
@@ -37,13 +35,12 @@ public class UserController {
         return userService.loginUser(loginRequest);
     }
 
+    @GetMapping("/profile")
+    public ResponseEntity<?> retrieveUser(@RequestBody RetrieveUser retrieveUser){
+        LOGGER.info("Retrieving info");
+        return userService.retrieveUser(retrieveUser);
+    }
 
-
-
-//    @PostMapping("/profile")
-//    public UserProfile createProfile(@RequestBody UserProfile user) {
-//        LOGGER.info("Calling createProfile method from Controller!");
-//        return userService.createProfile(user);
 }
 
 

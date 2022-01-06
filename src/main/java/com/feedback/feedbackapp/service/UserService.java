@@ -5,6 +5,7 @@ import com.feedback.feedbackapp.model.User;
 import com.feedback.feedbackapp.model.UserProfile;
 import com.feedback.feedbackapp.model.request.LoginRequest;
 import com.feedback.feedbackapp.model.response.LoginResponse;
+import com.feedback.feedbackapp.model.retrieve.RetrieveUser;
 import com.feedback.feedbackapp.repository.ProfileRepository;
 import com.feedback.feedbackapp.repository.UserRepository;
 import com.feedback.feedbackapp.security.JWTUtils;
@@ -79,4 +80,14 @@ public class UserService {
         final String jwt = jwtUtils.generateToken(userDetails);
         return ResponseEntity.ok(new LoginResponse(jwt));
     }
+
+
+    public  ResponseEntity <?> retrieveUser(RetrieveUser retrieveUser){
+        if (ProfileRepository.existsBy)
+    }
+
+
+
+
+
 }
