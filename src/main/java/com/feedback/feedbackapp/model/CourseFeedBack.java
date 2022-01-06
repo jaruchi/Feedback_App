@@ -26,6 +26,7 @@ public class CourseFeedBack {
 
     @ManyToOne
     @JoinColumn(name = "course_id")
+    //@JsonIgnore   ///Commenting so that we can get course information for the feedback
     private Course course;
 
     @ManyToOne

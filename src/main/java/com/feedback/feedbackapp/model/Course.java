@@ -32,7 +32,7 @@ public class Course {
 //    @OneToMany(mappedBy = "course")
 //    @LazyCollection(LazyCollectionOption.FALSE)
 //    private List<CourseFeedBack> courseFeedBackList;
-    // We dont need list of feedback as part of course modal BECAUSE a course should not list all its feedback as it
+    // We don't need list of feedback as part of course model BECAUSE a course should not list all its feedback as it
     // is restricted by user role.
     // course endpoints are not/should not provide information about course feedbacks.
 
