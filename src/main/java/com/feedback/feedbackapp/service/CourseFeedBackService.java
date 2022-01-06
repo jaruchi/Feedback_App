@@ -12,7 +12,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Locale;
 import java.util.Optional;
 import java.util.logging.Logger;
 
@@ -34,7 +33,7 @@ public class CourseFeedBackService {
         this.courseRepository = courseRepository;
     }
 
-    // to get all course feedbacks for a course
+    // to get all course feedbacks by an instructor
     // http://localhost:9092/api/coursefeedbacks/
     public List<CourseFeedBack> getCourseFeedBacksByCourse(Long courseId) {
         LOGGER.info("calling getCourseFeedBacks method from service");

@@ -46,10 +46,20 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
+    @Autowired
+    public void setProfileRepository(ProfileRepository profileRepository) {
+        this.profileRepository = profileRepository;
+    }
+
     public User createUser(User userObject){
         LOGGER.info("Calling createUser from service!");
         if (!userRepository.existsByEmailAddress(userObject.getEmailAddress())){
             userObject.setPassword(passwordEncoder.encode(userObject.getPassword()));
+            String firstName = userObject.getFirstname();
+            String lastName = userObject.getLastname();
+            String description = userObject.getRole();
+            UserProfile userProfileObject = new UserProfile(firstName, lastName, description);
+            profileRepository.save(userProfileObject);
             return userRepository.save(userObject);
         }
         else {

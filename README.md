@@ -11,13 +11,14 @@ ER Diagram
 
 ## User Model
 - A user can register as a student or instructor
+- A user can login
 - A user(instructor) can create a Class 
 - A user(instructor) can create Homework 
 - A user(student) can submit feedback for a class.
 - A user(student) can submit feed for the homework they get.
 
 
-## Class Model
+## Course Model
 - As a user(instructor), I should be able to create a class.
 - As a user, I should be able to read a class.
 - As a user(instructor), I should be able to update a class.
@@ -31,26 +32,26 @@ ER Diagram
 - As a user(instructor), I should be able to delete a homework.
 
 
-## Classroom Feedback Model
+## Course Feedback Model
 - As a user(student), I should be able to create feedback for a course.
 - As a user(student), I should be able to update course feedback.
 - As a user(student), I should be able to read feedback for a course.
 - As a user(student), I should be able to delete feedback for a course.
 - As a user(student), I should be able to see all my course feedbacks.
-- As a user(instructor), can see feedback for a class by all students. (future)
+- As a user(instructor), I should be able to see feedback for a course by all students. (future)
 
 
 ## Homework Feedback Model
-- As a user(student), I should be able to create a homework feedback.
-- As a user(student), I should be able to read a homework feedback.
-- As a user(student), I shoule be able to see all the feedbacks
-- As a user(student), I should be able to update a homework feedback.
-- As a user(student), I should be able to delete a homework feedback.
-- As a user(instructor), can see feedback for a homework by all students.(future)
+- As a user(student), I should be able to create feedback for a homework.
+- As a user(student), I should be able to update homework feedback.
+- As a user(student), I should be able to read feedback for a homework.
+- As a user(student), I should be able to delete feedback for a homework.
+- As a user(student), I should be able to see all my homework feedbacks.
+- As a user(instructor), I should be able to see feedback for a homework by all students. (future)
 
 ## EndPoint
 
-### Class Feedback endpoint 
+### Course Feedback endpoint 
 | Request_Type| URL                       |Request Body  |Request Header            | Action                 | Access       |
 | - | - | - | - | - | - |
 | GET         | api/classfeedback         |none          |Authorization Bearer TOKEN| get all class feed     |private       |
@@ -59,7 +60,7 @@ ER Diagram
 |PUT          |api/classfeedback/{classid}|body          |Authorization Bearer TOKEN|feedback info           |private       |
 |DELETE       |api/classfeedback/{classid}|none          |Authorization Bearer TOKEN|Delete single class feed|private       |
 
-### Class endpoint 
+### Course endpoint 
 | Request_Type| URL           |Request Body  |Request Header| Action       | Access       |
 | - | - | - | - | - | - |
 | GET   | api/class |none|Authorization Bearer TOKEN| get all class |private|

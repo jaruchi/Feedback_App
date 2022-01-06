@@ -38,10 +38,10 @@ public class User {
     @JoinColumn(name = "profile_id", referencedColumnName = "id")
     private UserProfile userProfile;
 
-    // user can have more than one coursefeedback
-    @OneToMany(mappedBy = "user")
-    @LazyCollection(LazyCollectionOption.FALSE)
-    private List<CourseFeedBack> courseFeedBackList;
+//    // user can have more than one coursefeedback
+//    @OneToMany(mappedBy = "user")
+//    @LazyCollection(LazyCollectionOption.FALSE)
+//    private List<CourseFeedBack> courseFeedBackList;
 
     public User() {
 

@@ -35,6 +35,7 @@ public class Course {
     // We don't need list of feedback as part of course model BECAUSE a course should not list all its feedback as it
     // is restricted by user role.
     // course endpoints are not/should not provide information about course feedbacks.
+    //to avoid recursion
 
     @ManyToOne
     @JoinColumn(name = "user_id")
@@ -90,6 +91,14 @@ public class Course {
 
     public void setWeek(Integer week) {
         this.week = week;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
 //    public List<CourseFeedBack> getCourseFeedBackList() {
