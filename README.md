@@ -32,13 +32,13 @@ ER Diagram
 
 
 ## Classroom Feedback Model
-- As a user(student), I should be able to create a class feedback.
-- As a user(student), I should be able to read a class feedback.
-- As a user(student), I shoule be able to see all the feedbacks
-- As a user(student), I should be able to update a class feedback.
-- As a user(student), I should be able to delete a class feedback.
-- As a user(instructor), can see feedback for a class by all students.(future)
-- 
+- As a user(student), I should be able to create feedback for a course.
+- As a user(student), I should be able to update course feedback.
+- As a user(student), I should be able to read feedback for a course.
+- As a user(student), I should be able to delete feedback for a course.
+- As a user(student), I should be able to see all my course feedbacks.
+- As a user(instructor), can see feedback for a class by all students. (future)
+
 
 ## Homework Feedback Model
 - As a user(student), I should be able to create a homework feedback.
