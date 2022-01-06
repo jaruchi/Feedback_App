@@ -37,6 +37,9 @@ public class UserController {
         return userService.loginUser(loginRequest);
     }
 
+
+
+
 //    @PostMapping("/profile")
 //    public UserProfile createProfile(@RequestBody UserProfile user) {
 //        LOGGER.info("Calling createProfile method from Controller!");

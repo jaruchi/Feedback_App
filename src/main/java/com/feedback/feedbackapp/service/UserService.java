@@ -19,6 +19,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
 import java.util.logging.Logger;
 
 @Service
@@ -46,15 +47,24 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
+    @Autowired
+    public void setProfileRepository(ProfileRepository profileRepository) {
+        this.profileRepository = profileRepository;
+    }
+
     public User createUser(User userObject){
         LOGGER.info("Calling createUser from service!");
-        if (!userRepository.existsByEmailAddress(userObject.getEmailAddress())){
-            userObject.setPassword(passwordEncoder.encode(userObject.getPassword()));
-            return userRepository.save(userObject);
-        }
-        else {
+        if (userRepository.existsByEmailAddress(userObject.getEmailAddress())) {
             throw new InformationExistException("User with email address " +
                     userObject.getEmailAddress() + " already exists!");
+        } else {
+            userObject.setPassword(passwordEncoder.encode(userObject.getPassword()));
+            String firstName = userObject.getFirstname();
+            String lastName = userObject.getLastname();
+            String description = userObject.getRole();
+            UserProfile userProfileObject = new UserProfile(firstName, lastName, description);
+            profileRepository.save(userProfileObject);
+            return userRepository.save(userObject);
         }
     }
     public User findUserByEmailAddress(String email){
