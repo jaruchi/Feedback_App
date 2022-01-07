@@ -55,6 +55,10 @@ public class CourseService {
                     + " " + "already exists");
         }
         // todo : check for validations of courseobject
+        if(courseObject.getTopic() == null || courseObject.getTopic().isBlank())
+        {
+            throw new InformationNotFoundException("-------topic is not provided ---");
+        }
         courseObject.setUser(userDetails.getUser());
         return courseRepository.save(courseObject);
     }
