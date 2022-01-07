@@ -42,13 +42,14 @@ public class Course {
     public Course() {
     }
 
-    public Course(Long id, String startDate, String endDate, String topic) {
+    public Course(Long id, String startDate, String endDate, Integer week, String topic) {
         this.id = id;
         this.startDate = startDate;
         this.endDate = endDate;
         this.week = week;
         this.topic = topic;
     }
+
 
     public Long getId() {
         return id;
@@ -98,11 +99,4 @@ public class Course {
         this.user = user;
     }
 
-//    public List<CourseFeedBack> getCourseFeedBackList() {
-//        return courseFeedBackList;
-//    }
-//
-//    public void setCourseFeedBackList(List<CourseFeedBack> courseFeedBackList) {
-//        this.courseFeedBackList = courseFeedBackList;
-//    }
 }

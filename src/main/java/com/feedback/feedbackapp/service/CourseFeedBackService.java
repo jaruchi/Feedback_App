@@ -4,6 +4,7 @@ import com.feedback.feedbackapp.exception.InformationExistException;
 import com.feedback.feedbackapp.exception.InformationNotFoundException;
 import com.feedback.feedbackapp.model.Course;
 import com.feedback.feedbackapp.model.CourseFeedBack;
+import com.feedback.feedbackapp.model.response.CourseTitleResponse;
 import com.feedback.feedbackapp.repository.CourseFeedBackRepository;
 import com.feedback.feedbackapp.repository.CourseRepository;
 import com.feedback.feedbackapp.security.MyUserDetails;
@@ -33,19 +34,6 @@ public class CourseFeedBackService {
         this.courseRepository = courseRepository;
     }
 
-    // to get all course feedbacks by an instructor
-    // http://localhost:9092/api/coursefeedbacks/
-    public List<CourseFeedBack> getCourseFeedBacksByCourse(Long courseId) {
-        LOGGER.info("calling getCourseFeedBacks method from service");
-        MyUserDetails userDetails =
-                (MyUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        String userRole = userDetails.getUser().getRole().toLowerCase();
-        if (!userRole.equals("instructor")) {
-            throw new InformationNotFoundException("-------not a valid instructor ---");
-        }
-
-        return courseFeedBackRepository.findByCourseId(courseId);
-    }
 
     // to get all course feedbacks for a course
     // http://localhost:9092/api/coursefeedbacks/
@@ -92,14 +80,16 @@ public class CourseFeedBackService {
                 (MyUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Long userId = userDetails.getUser().getId();
         String userRole = userDetails.getUser().getRole().toLowerCase();
-        if (!userRole.equals("student")) {
-            throw new InformationNotFoundException("-------not a valid user ---");
+        if (!userRole.equals("instructor")) {
+            throw new InformationNotFoundException("-------not a valid user only student can create a course " +
+                    "feedback---");
         }
         Optional<CourseFeedBack> courseFeedBack = courseFeedBackRepository.findByUserIdAndCourseId(userId, courseId);
         if (courseFeedBack.isPresent()) {
             throw new InformationExistException("course feed back with name " + courseFeedBack.get().getTitle()
                     + " " + "already exists");
         }
+
         courseFeedBackObject.setCourse(course.get());
         courseFeedBackObject.setUser(userDetails.getUser());
         return courseFeedBackRepository.save(courseFeedBackObject);
@@ -118,8 +108,9 @@ public class CourseFeedBackService {
                 (MyUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Long userId = userDetails.getUser().getId();
         String userRole = userDetails.getUser().getRole().toLowerCase();
-        if (!userRole.equals("student")) {
-            throw new InformationNotFoundException("-------not a valid user ---");
+        if (!userRole.equals("instructor")) {
+            throw new InformationNotFoundException("-------not a valid user only student can update a course feedback" +
+                    "---");
         }
 
         Optional<CourseFeedBack> courseFeedBack = courseFeedBackRepository.findByUserIdAndCourseId(userId, courseId);
@@ -148,6 +139,11 @@ public class CourseFeedBackService {
         MyUserDetails userDetails =
                 (MyUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Long userId = userDetails.getUser().getId();
+        String userRole = userDetails.getUser().getRole().toLowerCase();
+        if (!userRole.equals("instructor")) {
+            throw new InformationNotFoundException("-------not a valid user only student can delete a course feedback" +
+                    "---");
+        }
         Optional<CourseFeedBack> courseFeedBack = courseFeedBackRepository.findByUserIdAndCourseId(userId, courseId);
 
         if (courseFeedBack.isEmpty()) {
@@ -156,5 +152,18 @@ public class CourseFeedBackService {
         }
         courseFeedBackRepository.deleteById(courseFeedBack.get().getId());
         return courseFeedBack;
+    }
+
+    // to get all course feedbacks for a course by an instructor
+    // http://localhost:9092/api/coursefeedbacks/{courseId}
+    public List<CourseFeedBack> getCourseFeedBacksByCourse(Long courseId) {
+        LOGGER.info("calling getCourseFeedBacks method from service");
+        MyUserDetails userDetails =
+                (MyUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String userRole = userDetails.getUser().getRole().toLowerCase();
+        if (!userRole.equals("instructor")) {
+            throw new InformationNotFoundException("-------not a valid instructor ---");
+        }
+        return courseFeedBackRepository.findByCourseId(courseId);
     }
 }

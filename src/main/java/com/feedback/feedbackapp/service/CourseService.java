@@ -47,17 +47,16 @@ public class CourseService {
                 (MyUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         String userRole = userDetails.getUser().getRole().toLowerCase();
         if (!userRole.equals("instructor")) {
-            throw new InformationNotFoundException("-------not a valid user ---");
+            throw new InformationNotFoundException("not a valid user only an instructor can create a course");
         }
         Optional<Course> course  = courseRepository.findByTopic(courseObject.getTopic());
         if (course.isPresent()) {
             throw new InformationExistException("course with topic " + course.get().getTopic()
                     + " " + "already exists");
         }
-        // todo : check for validations of courseobject
         if(courseObject.getTopic() == null || courseObject.getTopic().isBlank())
         {
-            throw new InformationNotFoundException("-------topic is not provided ---");
+            throw new InformationNotFoundException("topic is not provided");
         }
         courseObject.setUser(userDetails.getUser());
         return courseRepository.save(courseObject);
@@ -70,7 +69,7 @@ public class CourseService {
                 (MyUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         String userRole = userDetails.getUser().getRole().toLowerCase();
         if (!userRole.equals("instructor")) {
-            throw new InformationNotFoundException("-------not a valid user ---");
+            throw new InformationNotFoundException("not a valid user only an instructor can update a course");
         }
 
         Optional<Course> course = courseRepository.findById(courseId);
@@ -97,7 +96,7 @@ public class CourseService {
                 (MyUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         String userRole = userDetails.getUser().getRole().toLowerCase();
         if (!userRole.equals("instructor")) {
-            throw new InformationNotFoundException("-------not a valid user ---");
+            throw new InformationNotFoundException("not a valid user only an instructor can delete a course");
         }
         Optional<Course> course = courseRepository.findById(courseId);
 

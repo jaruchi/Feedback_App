@@ -3,6 +3,7 @@ package com.feedback.feedbackapp.controller;
 import com.feedback.feedbackapp.model.CourseFeedBack;
 import com.feedback.feedbackapp.service.CourseFeedBackService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,14 +22,6 @@ public class CourseFeedBackController {
         this.courseFeedBackService = courseFeedBackService;
     }
 
-
-    //to get all the course feedbacks
-    // http://localhost:9092/api/coursefeedbacks/
-    @GetMapping(path = "/coursefeedbacks/course/1")
-    public List<CourseFeedBack> getCourseFeedBacksByCourse(@PathVariable(value = "courseId") Long courseId ) {
-        LOGGER.info("calling getCourseFeedBacks method from controller");
-        return courseFeedBackService.getCourseFeedBacksByCourse(courseId);
-    }
 
     //to get all the course feedbacks
     // http://localhost:9092/api/coursefeedbacks/
@@ -70,5 +63,13 @@ public class CourseFeedBackController {
     public Optional<CourseFeedBack> deleteCourseFeedBack(@PathVariable(value = "courseId") Long courseId) {
         LOGGER.info("calling deleteCourseFeedBack method from controller");
         return courseFeedBackService.deleteCourseFeedBack(courseId);
+    }
+
+    // to get all course feedbacks for a course by an instructor
+    // http://localhost:9092/api/coursefeedbacks/5
+    @GetMapping(path = "/coursefeedbacks/{courseId}")
+    public List<CourseFeedBack> getCourseFeedBacksByCourse(@PathVariable(value = "courseId") Long courseId) {
+        LOGGER.info("calling getCourseFeedBacksByCourse method from service");
+        return courseFeedBackService.getCourseFeedBacksByCourse(courseId);
     }
 }
