@@ -47,7 +47,7 @@ public class CourseFeedBackService {
 
     // to get single course feedback for a course
     // http://localhost:9092/api/coursefeedback/course/1
-    public CourseFeedBack getCourseFeedBack(Long courseId) {
+    public CourseTitleResponse getCourseFeedBack(Long courseId) {
         LOGGER.info("calling getCourseFeedBack method from service");
 
         Optional<Course> course = courseRepository.findById(courseId);
@@ -64,7 +64,10 @@ public class CourseFeedBackService {
             throw new InformationNotFoundException("course feedback for course : " + course.get().getTopic() +
                     " not found");
         }
-        return courseFeedBack.get();
+        CourseTitleResponse courseTitleResponse = new CourseTitleResponse(courseFeedBack.get().getTitle(),
+                Optional.of(courseFeedBack.get()));
+
+        return courseTitleResponse;
     }
 
     // to create course feedback for a course
@@ -154,16 +157,31 @@ public class CourseFeedBackService {
         return courseFeedBack;
     }
 
-    // to get all course feedbacks for a course by an instructor
-    // http://localhost:9092/api/coursefeedbacks/{courseId}
-    public List<CourseFeedBack> getCourseFeedBacksByCourse(Long courseId) {
-        LOGGER.info("calling getCourseFeedBacks method from service");
-        MyUserDetails userDetails =
-                (MyUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        String userRole = userDetails.getUser().getRole().toLowerCase();
-        if (!userRole.equals("instructor")) {
-            throw new InformationNotFoundException("-------not a valid instructor ---");
-        }
-        return courseFeedBackRepository.findByCourseId(courseId);
-    }
+//    // to get all course feedbacks for a course by an instructor
+//    // http://localhost:9092/api/coursefeedbacks/{courseId}
+//    public CourseTitleResponse getCourseFeedBacksByCourse(Long courseId) {
+//        LOGGER.info("calling getCourseFeedBacks method from service");
+//        MyUserDetails userDetails =
+//                (MyUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        String userRole = userDetails.getUser().getRole().toLowerCase();
+//        if (!userRole.equals("instructor")) {
+//            throw new InformationNotFoundException("-------not a valid instructor ---");
+//        }
+//
+//        Optional<Course> course = courseRepository.findById(courseId);
+//        if (course.isEmpty()) {
+//            throw new InformationNotFoundException("course with id " + courseId + " not found");
+//        }
+//        List<CourseFeedBack> courseFeedBack = courseFeedBackRepository.findByCourseId(courseId);
+//        if (courseFeedBack.isEmpty()) {
+//            throw new InformationNotFoundException("course feedback for course " + course.get().getTopic()
+//                    + " don't exists");
+//        }
+//        // return courseFeedBackRepository.findByCourseId(courseId);
+//
+//        CourseTitleResponse courseTitleResponse = new CourseTitleResponse(course.get().getTopic(),
+//                courseFeedBack);
+//
+//        return courseTitleResponse;
+//    }
 }

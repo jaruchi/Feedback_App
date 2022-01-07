@@ -8,6 +8,8 @@ import java.util.Optional;
 
 @Repository
 public interface HomeworkRepository extends JpaRepository<Homework, Long> {
-    Optional<Homework> findHomeworkById(Long homeworkId);
+    Optional<Homework> findById(Long homeworkId);
     Optional<Homework> findByName(String name);
+
+    Optional<Homework> deleteById(Homework homework);
 }

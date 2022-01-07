@@ -2,11 +2,13 @@ package com.feedback.feedbackapp.model.response;
 
 import com.feedback.feedbackapp.model.CourseFeedBack;
 
+import java.util.Optional;
+
 public class CourseTitleResponse {
     private String courseTitle;
-    private CourseFeedBack courseFeedback;
+    private Optional<CourseFeedBack> courseFeedback;
 
-    public CourseTitleResponse(String courseTitle, CourseFeedBack courseFeedback) {
+    public CourseTitleResponse(String courseTitle, Optional<CourseFeedBack> courseFeedback) {
         this.courseTitle = courseTitle;
         this.courseFeedback = courseFeedback;
     }
@@ -19,11 +21,11 @@ public class CourseTitleResponse {
         this.courseTitle = courseTitle;
     }
 
-    public CourseFeedBack getCourseFeedback() {
+    public Optional<CourseFeedBack> getCourseFeedback() {
         return courseFeedback;
     }
 
     public void setCourseFeedback(CourseFeedBack courseFeedback) {
-        this.courseFeedback = courseFeedback;
+        this.courseFeedback = Optional.ofNullable(courseFeedback);
     }
 }

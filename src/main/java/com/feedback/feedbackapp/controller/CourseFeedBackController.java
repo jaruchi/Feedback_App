@@ -1,6 +1,9 @@
 package com.feedback.feedbackapp.controller;
 
+import com.feedback.feedbackapp.exception.InformationNotFoundException;
 import com.feedback.feedbackapp.model.CourseFeedBack;
+import com.feedback.feedbackapp.model.response.CourseTitleResponse;
+import com.feedback.feedbackapp.security.MyUserDetails;
 import com.feedback.feedbackapp.service.CourseFeedBackService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -34,7 +37,7 @@ public class CourseFeedBackController {
     //to get a single course feedback for a course
     // http://localhost:9092/api/coursefeedback/course/1
     @GetMapping(path = "/coursefeedback/course/{courseId}")
-    public CourseFeedBack getCourseFeedBack(@PathVariable(value = "courseId") Long courseId) {
+    public CourseTitleResponse getCourseFeedBack(@PathVariable(value = "courseId") Long courseId) {
         LOGGER.info("calling getCourseFeedBack method from controller");
         return courseFeedBackService.getCourseFeedBack(courseId);
     }
@@ -65,11 +68,11 @@ public class CourseFeedBackController {
         return courseFeedBackService.deleteCourseFeedBack(courseId);
     }
 
-    // to get all course feedbacks for a course by an instructor
-    // http://localhost:9092/api/coursefeedbacks/5
-    @GetMapping(path = "/coursefeedbacks/{courseId}")
-    public List<CourseFeedBack> getCourseFeedBacksByCourse(@PathVariable(value = "courseId") Long courseId) {
-        LOGGER.info("calling getCourseFeedBacksByCourse method from service");
-        return courseFeedBackService.getCourseFeedBacksByCourse(courseId);
-    }
+//    // to get all course feedbacks for a course by an instructor
+//    // http://localhost:9092/api/coursefeedbacks/5
+//    @GetMapping(path = "/coursefeedbacks/{courseId}")
+//    public CourseTitleResponse getCourseFeedBacksByCourse(@PathVariable(value = "courseId") Long courseId) {
+//        LOGGER.info("calling getCourseFeedBacksByCourse method from service");
+//        return courseFeedBackService.getCourseFeedBacksByCourse(courseId);
+//    }
 }

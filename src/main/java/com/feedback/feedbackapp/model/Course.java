@@ -1,8 +1,11 @@
 package com.feedback.feedbackapp.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "course")
@@ -25,14 +28,10 @@ public class Course {
     @Column
     private String topic;
 
-    // course can have more than one feedback
-//    @OneToMany(mappedBy = "course")
-//    @LazyCollection(LazyCollectionOption.FALSE)
-//    private List<CourseFeedBack> courseFeedBackList;
-    // We don't need list of feedback as part of course model BECAUSE a course should not list all its feedback as it
-    // is restricted by user role.
-    // course endpoints are not/should not provide information about course feedbacks.
-    //to avoid recursion
+    @OneToMany(mappedBy = "course", orphanRemoval = true)
+    @LazyCollection(LazyCollectionOption.FALSE)
+    private List<CourseFeedBack> courseFeedbackList;
+
 
     @ManyToOne
     @JoinColumn(name = "user_id")

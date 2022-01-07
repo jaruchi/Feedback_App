@@ -24,14 +24,6 @@ public class HomeworkFeedbackController {
 
     //to get all the homework feedbacks
     // http://localhost:9092/api/homeworkfeedbacks/
-    @GetMapping(path = "/homeworkfeedbacks/homework/1")
-    public List<HomeworkFeedback> getHomeworkFeedbacksByCourse(@PathVariable(value = "homeworkId") Long homeworkId ) {
-        LOGGER.info("calling getHomeworkFeedbacks method from controller");
-        return homeworkFeedbackService.getHomeworkFeedbacksByCourse(homeworkId);
-    }
-
-    //to get all the homework feedbacks
-    // http://localhost:9092/api/homeworkfeedbacks/
     @GetMapping(path = "/homeworkfeedbacks")
     public List<HomeworkFeedback> getHomeworkFeedbacks( ) {
         LOGGER.info("calling getHomeworkFeedbacks method from controller");
@@ -50,25 +42,33 @@ public class HomeworkFeedbackController {
     // http://localhost:9092/api/homeworkfeedback/homework/2/
     @PostMapping(path = "/homeworkfeedback/homework/{homeworkId}")
     public HomeworkFeedback createHomeworkFeedback(@PathVariable(value = "homeworkId") Long homeworkId,
-                                               @RequestBody HomeworkFeedback courseFeedBackObject) {
+                                               @RequestBody HomeworkFeedback homeworkFeedBackObject) {
         LOGGER.info("calling createHomeworkFeedback method from controller");
-        return homeworkFeedbackService.createHomeworkFeedback(homeworkId, courseFeedBackObject);
+        return homeworkFeedbackService.createHomeworkFeedback(homeworkId, homeworkFeedBackObject);
     }
 
     //to update a homework feedback for a homework
     // http://localhost:9092/api/homeworkfeedback/homework/1
     @PutMapping(path = "/homeworkfeedback/homework/{homeworkId}")
     public HomeworkFeedback updateHomeworkFeedback(@PathVariable(value = "homeworkId") Long homeworkId,
-                                                   @RequestBody HomeworkFeedback courseFeedBackObject) {
+                                                   @RequestBody HomeworkFeedback homeworkFeedBackObject) {
         LOGGER.info("calling updateHomeworkFeedback method from controller");
-        return homeworkFeedbackService.updateHomeworkFeedback(homeworkId, courseFeedBackObject);
+        return homeworkFeedbackService.updateHomeworkFeedback(homeworkId, homeworkFeedBackObject);
     }
 
     //to delete a homework feedback for a homework
-    // http://localhost:9092/api/homeworkfeedback/1/course/1
+    // http://localhost:9092/api/homeworkfeedback/1/homework/1
     @DeleteMapping(path = "/homeworkfeedback/homework/{homeworkId}")
     public Optional<HomeworkFeedback> deleteHomeworkFeedback(@PathVariable(value = "homeworkId") Long homeworkId) {
         LOGGER.info("calling deleteHomeworkFeedback method from controller");
         return homeworkFeedbackService.deleteHomeworkFeedback(homeworkId);
+    }
+
+    //to get all the homework feedbacks
+    // http://localhost:9092/api/homeworkfeedbacks/
+    @GetMapping(path = "/homeworkfeedbacks/homework/1")
+    public List<HomeworkFeedback> getHomeworkFeedbacksByCourse(@PathVariable(value = "homeworkId") Long homeworkId ) {
+        LOGGER.info("calling getHomeworkFeedbacks method from controller");
+        return homeworkFeedbackService.getHomeworkFeedbacksByHomework(homeworkId);
     }
 }
