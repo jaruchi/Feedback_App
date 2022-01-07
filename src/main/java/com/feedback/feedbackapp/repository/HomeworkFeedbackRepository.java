@@ -14,4 +14,6 @@ public interface HomeworkFeedbackRepository extends JpaRepository<HomeworkFeedba
     List<HomeworkFeedback> findByUserId(Long userId);
 
     Optional<HomeworkFeedback> findByUserIdAndHomeworkId(Long userId, Long homeworkId);
+
+    Optional<HomeworkFeedback> deleteById(HomeworkFeedback homeworkFeedback);
 }
