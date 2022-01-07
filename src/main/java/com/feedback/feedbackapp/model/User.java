@@ -43,9 +43,7 @@ public class User {
 //    private List<CourseFeedBack> courseFeedBackList;
 
     public User() {
-
     }
-
 
     public Long getId() {
         return id;

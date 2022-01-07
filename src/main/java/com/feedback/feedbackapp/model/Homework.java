@@ -1,6 +1,10 @@
 package com.feedback.feedbackapp.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import javax.persistence.*;
+import java.util.List;
 
 
 @Entity
@@ -14,10 +18,14 @@ public class Homework {
     private Long id;
 
     @Column
-    private String Name;
+    private String name;
 
     @Column
-    private String DueDate;
+    private String dueDate;
+
+    @OneToMany(mappedBy = "homework", orphanRemoval = true)
+    @LazyCollection(LazyCollectionOption.FALSE)
+    private List<HomeworkFeedback> homeworkFeedbackList;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
@@ -29,8 +37,8 @@ public class Homework {
 
     public Homework(Long id, String name, String dueDate) {
         this.id = id;
-        this.Name = name;
-        this.DueDate = dueDate;
+        this.name = name;
+        this.dueDate = dueDate;
     }
 
 
@@ -43,19 +51,19 @@ public class Homework {
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        this.name = name;
     }
 
     public String getDueDate() {
-        return DueDate;
+        return dueDate;
     }
 
     public void setDueDate(String dueDate) {
-        DueDate = dueDate;
+        this.dueDate = dueDate;
     }
 
     public User getUser() {

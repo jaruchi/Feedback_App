@@ -23,10 +23,10 @@ public class CourseFeedBack {
     @Column
     private Integer rating;
 
+
     @ManyToOne
     @JoinColumn(name = "course_id")
-    //@JsonIgnore   ///Commenting so that we can get course information in the feedback. It was use to avoid
-    // recursionwith Course.CourseFeedBackList
+    @JsonIgnore
     private Course course;
 
     @ManyToOne

@@ -88,8 +88,6 @@ public class UserService {
                 (MyUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
         Optional<User> user = userRepository.findById(userDetails.getUser().getId());
-        //Optional<User> user = userRepository.findByIdAndUserProfileId(userDetails.getUser().getId(), profileId);
-
         return user.get();
     }
 }

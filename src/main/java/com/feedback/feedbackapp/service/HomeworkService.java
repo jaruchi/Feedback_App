@@ -32,7 +32,7 @@ public class HomeworkService {
 
     public Optional getHomework(Long homeworkId) {
         LOGGER.info("calling getHomework method from service");
-        Optional homework = homeworkRepository.findHomeworkById(homeworkId);
+        Optional homework = homeworkRepository.findById(homeworkId);
             if (homework.isEmpty()) {
                 throw new InformationNotFoundException("homework with id: " + homeworkId+
                         " not found");}
@@ -66,7 +66,7 @@ public class HomeworkService {
             throw new InformationNotFoundException("-------not a valid user ---");
         }
 
-        Optional<Homework> homework = homeworkRepository.findHomeworkById(homeworkId);
+        Optional<Homework> homework = homeworkRepository.findById(homeworkId);
         if (homework.isEmpty()) {
             throw new InformationNotFoundException("homework with id " + homeworkId + " don't exists");
         }
@@ -86,11 +86,11 @@ public class HomeworkService {
             if (!userRole.equals("instructor")) {
                 throw new InformationNotFoundException("-------not a valid user ---");
             }
-            Optional<Homework> homework = homeworkRepository.findHomeworkById(homeworkId);
+            Optional<Homework> homework = homeworkRepository.findById(homeworkId);
             if (homework.isEmpty()) {
                 throw new InformationNotFoundException("homework with id : " + homeworkId + " not found");
             }
-            homeworkRepository.deleteById(homework.get().getId());
-            return homework;
+             homeworkRepository.deleteById(homeworkId);
+        return homework;
     }
 }

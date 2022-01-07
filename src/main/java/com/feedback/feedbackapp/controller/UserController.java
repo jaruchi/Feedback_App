@@ -21,18 +21,21 @@ public class UserController {
         this.userService = userService;
     }
 
+    // to register a user
     @PostMapping("/register")
     public User createUser(@RequestBody User userObject){
         LOGGER.info("This instance create a User!");
         return userService.createUser(userObject);
     }
 
+    // to login a user
     @PostMapping("/login")
     public ResponseEntity<?> loginUser(@RequestBody LoginRequest loginRequest){
         LOGGER.info("This instance login a User!");
         return userService.loginUser(loginRequest);
     }
 
+    // to see a user profile
     @GetMapping("/profile")
     public User getUserProfile() {
         LOGGER.info("Retrieving info");
