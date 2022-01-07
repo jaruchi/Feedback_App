@@ -1,6 +1,8 @@
 package com.feedback.feedbackapp.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
 
@@ -27,21 +29,19 @@ public class HomeworkFeedback {
 
     @ManyToOne
     @JoinColumn(name = "homework_id")
-    //@JsonIgnore
-    private Course homework;
+    @JsonIgnore
+    private Homework homework;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
     @JsonIgnore
     private User user;
 
-    public HomeworkFeedback(Long id, String title, Integer completness, Integer comfort, String comments, Course course) {
-        this.id = id;
+    public HomeworkFeedback(String title, Integer completness, Integer comfort, String comments) {
         this.title = title;
         this.completness = completness;
         this.comfort = comfort;
         this.comments = comments;
-        this.homework = course;
     }
 
     public HomeworkFeedback() {
@@ -88,12 +88,12 @@ public class HomeworkFeedback {
         this.comments = comments;
     }
 
-    public Course getHomework() {
+    public Homework getHomework() {
         return homework;
     }
 
-    public void setHomework(Course course) {
-        this.homework = course;
+    public void setHomework(Homework homework) {
+        this.homework = homework;
     }
 
     public User getUser() {
