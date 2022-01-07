@@ -1,7 +1,6 @@
 package com.feedback.feedbackapp.controller;
 
 import com.feedback.feedbackapp.model.User;
-import com.feedback.feedbackapp.model.UserProfile;
 import com.feedback.feedbackapp.model.request.LoginRequest;
 import com.feedback.feedbackapp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
