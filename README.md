@@ -107,8 +107,8 @@ A user can register and login to perform various operations.
 
 ### Bonus
 - A user can see their profile
-- A user(instructor) can see all the feedbacks given by users for a particular course 
-- A user(instructor) can see all the feedbacks given by users for a particular homework
+- A user(instructor) can see all the feedbacks given by a student for a course 
+- A user(instructor) can see all the feedbacks given by a student for a homework
 
 
 ### Hurdles
@@ -143,7 +143,7 @@ A user can register and login to perform various operations.
   proper port number (9092 recommended) and 4 & 5 to be your postgres username and password
 
 ### Resources
-https://www.w3docs.com/snippets/git/how-to-rebase-git-branch.html
-Lesson videos
+- [git rebase] (https://www.w3docs.com/snippets/git/how-to-rebase-git-branch.html)
+- Lesson videos
 
 
