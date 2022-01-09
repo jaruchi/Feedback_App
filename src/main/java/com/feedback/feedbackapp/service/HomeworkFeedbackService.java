@@ -4,6 +4,7 @@ import com.feedback.feedbackapp.exception.InformationExistException;
 import com.feedback.feedbackapp.exception.InformationNotFoundException;
 import com.feedback.feedbackapp.model.Homework;
 import com.feedback.feedbackapp.model.HomeworkFeedback;
+import com.feedback.feedbackapp.model.response.HomeworkFeedbackResponse;
 import com.feedback.feedbackapp.repository.HomeworkFeedbackRepository;
 import com.feedback.feedbackapp.repository.HomeworkRepository;
 import com.feedback.feedbackapp.security.MyUserDetails;
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 @Service
 public class HomeworkFeedbackService {
@@ -31,17 +33,6 @@ public class HomeworkFeedbackService {
     @Autowired
     public void setHomeworkRepository(HomeworkRepository homeworkRepository) {
         this.homeworkRepository = homeworkRepository;
-    }
-
-
-    // to get all homework feedbacks for a homework
-    // http://localhost:9092/api/homeworkfeedbacks/
-    public List<HomeworkFeedback> getHomeworkFeedbacks() {
-        LOGGER.info("calling getHomeworkFeedbacks method from service");
-        MyUserDetails userDetails =
-                (MyUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        Long userId = userDetails.getUser().getId();
-        return homeworkFeedbackRepository.findByUserId(userId);
     }
 
     // to get single homework feedback for a homework
@@ -154,9 +145,25 @@ public class HomeworkFeedbackService {
         return homeworkFeedback;
     }
 
-    // to get all homework feedbacks by an instructor
+    // to get all homework feedbacks for a homework
     // http://localhost:9092/api/homeworkfeedbacks/
-    public List<HomeworkFeedback> getHomeworkFeedbacksByHomework(Long homeworkId) {
+    public List<HomeworkFeedbackResponse> getHomeworkFeedbacks() {
+        LOGGER.info("calling getHomeworkFeedbacks method from service");
+        MyUserDetails userDetails =
+                (MyUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Long userId = userDetails.getUser().getId();
+
+        List<HomeworkFeedback> homeworkFeedback = homeworkFeedbackRepository.findByUserId(userId);
+
+        List<HomeworkFeedbackResponse> response=
+                homeworkFeedback.stream().map(hf->new HomeworkFeedbackResponse(hf)).collect(Collectors.toList());
+
+        return response;
+    }
+
+    // to get all homework feedbacks by an instructor
+    // http://localhost:9092/api/homeworkfeedbacks/homework/1
+    public List<HomeworkFeedbackResponse> getHomeworkFeedbacksByHomework(Long homeworkId) {
         LOGGER.info("calling getHomeworkFeedbacks method from service");
         MyUserDetails userDetails =
                 (MyUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -165,6 +172,15 @@ public class HomeworkFeedbackService {
             throw new InformationNotFoundException("-------not a valid instructor ---");
         }
 
-        return homeworkFeedbackRepository.findByHomeworkId(homeworkId);
+        Optional<Homework> homework = homeworkRepository.findById(homeworkId);
+        if (homework.isEmpty()) {
+            throw new InformationNotFoundException("homework with id " + homeworkId + " not found");
+        }
+        List<HomeworkFeedback> homeworkFeedback = homeworkFeedbackRepository.findByHomeworkId(homeworkId);
+
+        List<HomeworkFeedbackResponse> response=
+                homeworkFeedback.stream().map(hf->new HomeworkFeedbackResponse(hf)).collect(Collectors.toList());
+
+        return response;
     }
 }

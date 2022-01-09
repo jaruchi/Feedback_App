@@ -1,12 +1,9 @@
 package com.feedback.feedbackapp.controller;
 
-import com.feedback.feedbackapp.exception.InformationNotFoundException;
 import com.feedback.feedbackapp.model.CourseFeedBack;
-import com.feedback.feedbackapp.model.response.CourseTitleResponse;
-import com.feedback.feedbackapp.security.MyUserDetails;
+import com.feedback.feedbackapp.model.response.CourseFeedbackResponse;
 import com.feedback.feedbackapp.service.CourseFeedBackService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -26,18 +23,10 @@ public class CourseFeedBackController {
     }
 
 
-    //to get all the course feedbacks
-    // http://localhost:9092/api/coursefeedbacks/
-    @GetMapping(path = "/coursefeedbacks")
-    public List<CourseFeedBack> getCourseFeedBacks( ) {
-        LOGGER.info("calling getCourseFeedBacks method from controller");
-        return courseFeedBackService.getCourseFeedBacks();
-    }
-
     //to get a single course feedback for a course
     // http://localhost:9092/api/coursefeedback/course/1
     @GetMapping(path = "/coursefeedback/course/{courseId}")
-    public CourseTitleResponse getCourseFeedBack(@PathVariable(value = "courseId") Long courseId) {
+    public Optional<CourseFeedBack> getCourseFeedBack(@PathVariable(value = "courseId") Long courseId) {
         LOGGER.info("calling getCourseFeedBack method from controller");
         return courseFeedBackService.getCourseFeedBack(courseId);
     }
@@ -68,11 +57,19 @@ public class CourseFeedBackController {
         return courseFeedBackService.deleteCourseFeedBack(courseId);
     }
 
-//    // to get all course feedbacks for a course by an instructor
-//    // http://localhost:9092/api/coursefeedbacks/5
-//    @GetMapping(path = "/coursefeedbacks/{courseId}")
-//    public CourseTitleResponse getCourseFeedBacksByCourse(@PathVariable(value = "courseId") Long courseId) {
-//        LOGGER.info("calling getCourseFeedBacksByCourse method from service");
-//        return courseFeedBackService.getCourseFeedBacksByCourse(courseId);
-//    }
+    //to get all the course feedbacks
+    // http://localhost:9092/api/coursefeedbacks/
+    @GetMapping(path = "/coursefeedbacks")
+    public List<CourseFeedbackResponse> getCourseFeedBacks() {
+        LOGGER.info("calling getCourseFeedBacks method from controller");
+        return courseFeedBackService.getCourseFeedBacks();
+    }
+
+    // to get all course feedbacks for a course by an instructor
+    // http://localhost:9092/api/coursefeedbacks/course/5
+    @GetMapping(path = "/coursefeedbacks/course/{courseId}")
+    public List<CourseFeedbackResponse> getCourseFeedBacksByCourse(@PathVariable(value = "courseId") Long courseId) {
+        LOGGER.info("calling getCourseFeedBacksByCourse method from service");
+        return courseFeedBackService.getCourseFeedBacksByCourse(courseId);
+    }
 }
