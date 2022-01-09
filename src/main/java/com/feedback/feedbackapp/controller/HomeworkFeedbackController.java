@@ -1,6 +1,7 @@
 package com.feedback.feedbackapp.controller;
 
 import com.feedback.feedbackapp.model.HomeworkFeedback;
+import com.feedback.feedbackapp.model.response.HomeworkFeedbackResponse;
 import com.feedback.feedbackapp.service.HomeworkFeedbackService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -22,17 +23,9 @@ public class HomeworkFeedbackController {
     }
 
 
-    //to get all the homework feedbacks
-    // http://localhost:9092/api/homeworkfeedbacks/
-    @GetMapping(path = "/homeworkfeedbacks")
-    public List<HomeworkFeedback> getHomeworkFeedbacks( ) {
-        LOGGER.info("calling getHomeworkFeedbacks method from controller");
-        return homeworkFeedbackService.getHomeworkFeedbacks();
-    }
-
     //to get a single homework feedback for a homework
     // http://localhost:9092/api/homeworkfeedback/homework/1
-    @GetMapping(path = "/homeworkfeedback/course/{homeworkId}")
+    @GetMapping(path = "/homeworkfeedback/homework/{homeworkId}")
     public HomeworkFeedback getHomeworkFeedback(@PathVariable(value = "homeworkId") Long homeworkId) {
         LOGGER.info("calling getHomeworkFeedback method from controller");
         return homeworkFeedbackService.getHomeworkFeedback(homeworkId);
@@ -64,11 +57,20 @@ public class HomeworkFeedbackController {
         return homeworkFeedbackService.deleteHomeworkFeedback(homeworkId);
     }
 
-    //to get all the homework feedbacks
+
+    //to get all the homework feedbacks by a student
     // http://localhost:9092/api/homeworkfeedbacks/
-    @GetMapping(path = "/homeworkfeedbacks/homework/1")
-    public List<HomeworkFeedback> getHomeworkFeedbacksByCourse(@PathVariable(value = "homeworkId") Long homeworkId ) {
+    @GetMapping(path = "/homeworkfeedbacks")
+    public List<HomeworkFeedbackResponse> getHomeworkFeedbacks( ) {
         LOGGER.info("calling getHomeworkFeedbacks method from controller");
+        return homeworkFeedbackService.getHomeworkFeedbacks();
+    }
+
+    //to get all the homework feedbacks for a homework by an instructor
+    // http://localhost:9092/api/homeworkfeedbacks/
+    @GetMapping(path = "/homeworkfeedbacks/homework/{homeworkId}")
+    public List<HomeworkFeedbackResponse> getHomeworkFeedbacksByHomework(@PathVariable(value = "homeworkId") Long homeworkId ) {
+        LOGGER.info("calling getHomeworkFeedbacksByHomework method from controller");
         return homeworkFeedbackService.getHomeworkFeedbacksByHomework(homeworkId);
     }
 }

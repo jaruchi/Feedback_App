@@ -21,7 +21,7 @@ public class HomeworkController {
         this.homeworkService = homeworkService;
     }
 
-    @GetMapping("/homework")
+    @GetMapping("/homeworks")
     public List<Homework> getHomework() {
         LOGGER.info("This instance should be retrieving all the Homework");
         return homeworkService.getHomework();
