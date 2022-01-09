@@ -7,6 +7,13 @@ This App allows a user(students) to provide feedbacks for the daily class they a
 ER Diagram
 ![Feedback](assets/erd.png)
 
+### MVP
+Our minimum viable product is a working database models:
+User, Course, CourseFeedback, Homework, HomeworkFeedback.
+All the models except User will have the four CRUD endpoints created using REST conventions.
+When invalid requests are made, the user will be notified by proper error messages.
+A user can register and login to perform various operations.
+
 ### User Stories
 
 ## User Model
@@ -97,5 +104,46 @@ ER Diagram
 |POST| auth/user/login |login user |Authorization Bearer TOKEN |Login User |private|
 |PUT| auth/user/{userid}|none|Authorization Bearer TOKEN|update user|private|
 |DELETE | auth/user/{userid}|none | Authorization Bearer TOKEN| Delete user|private|
+
+### Bonus
+- A user can see their profile
+- A user(instructor) can see all the feedbacks given by users for a particular course 
+- A user(instructor) can see all the feedbacks given by users for a particular homework
+
+
+### Hurdles
+- Merging the code was the greatest hurdle for us
+- Major setback was that only 1 machine has a database connectivity, which took most of the time in debugging issues 
+  when merging code.
+
+### Wins
+- Got confidence in working with Spring Boot Framework
+- Learned a lot about git merging/rebasing, creating branches, solving merge conflicts
+
+### Future Implementations
+- A user can see all the given feedbacks related to course and homework at same place
+- A user can update their profile
+- Add unit tests
+- Allow a user to update their password
+
+### Technologies Used
+- Lucidchart - to create the ERD
+- IntelliJ
+- Spring Boot
+- Maven
+- pgAdmin
+- postgres
+- Postman - used to test our end points
+- JWT - used as security for user login
+
+### Installation Instructions
+- Fork and clone the repository.
+- Using postgres, create a database called myfeedbackapp
+- Open the file Feedback_app/src/main/resources/application-dev.properties and change lines 2 to the 
+  proper port number (9092 recommended) and 4 & 5 to be your postgres username and password
+
+### Resources
+https://www.w3docs.com/snippets/git/how-to-rebase-git-branch.html
+Lesson videos
 
 
