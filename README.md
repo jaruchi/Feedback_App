@@ -111,6 +111,7 @@ Our minimum viable product is a working database for:
 
 ### Timeline
 Day 1 |Day 2	|Day 3	|Day 4	|Day 5  |
+| - | - | - | - | - |
 Set up Spring Boot and Application Planning | Divided our work, Create models, start CRUD operations | Worked on Git Issue, Testing | Finish CRUD Operations, Fix dependencies | Worked Bonus task such as Course, Course Feedback|
 
 ### Bonus
