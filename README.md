@@ -60,57 +60,53 @@ Our minimum viable product is a working database for:
 
 ### User Auth endpoint
 
-| Request Type | URL                 | Request Body               | Request Header       | Action          | Access  |
-| ------------ | ------------------- | -------------------------- | -------------------- | --------------- | ------- |
-| POST         | auth/users/register | user (instructor /student) |                      | register user   | public  |
-| POST         | auth/users/login    | user login info            |                      | Login User      | public  |
-| GET          | auth/users/profile  | none                       | Authorization[^user] | Retrieving user | private |
+| Request Type | URL                 | Request Body               | Request Header                 | Action          | Access  |
+| ------------ | ------------------- | -------------------------- | ------------------------------ | --------------- | ------- |
+| POST         | auth/users/register | user (instructor /student) |                                | register user   | public  |
+| POST         | auth/users/login    | user login info            |                                | Login User      | public  |
+| GET          | auth/users/profile  | none                       | Authorization : Bearer <TOKEN> | Retrieving user | private |
 
 ### Course endpoint
 
-| Request Type | URL                   | Request Body   | Request Header       | Action                   | Access  |
-| ------------ | --------------------- | -------------- | -------------------- | ------------------------ | ------- |
-| GET          | api/courses           | none           | Authorization[^user] | get all courses          | private |
-| GET          | api/course/{courseId} | none           | Authorization[^user] | get a specific course    | private |
-| POST         | api/course            | course         | Authorization[^user] | create a course          | private |
-| PUT          | api/course/{courseId} | partial course | Authorization[^user] | update a specific course | private |
-| DELETE       | api/course/{courseId} | none           | Authorization[^user] | Delete a specific course | private |
+| Request Type | URL                   | Request Body   | Request Header                 | Action                   | Access  |
+| ------------ | --------------------- | -------------- | ------------------------------ | ------------------------ | ------- |
+| GET          | api/courses           | none           | Authorization : Bearer <TOKEN> | get all courses          | private |
+| GET          | api/course/{courseId} | none           | Authorization : Bearer <TOKEN> | get a specific course    | private |
+| POST         | api/course            | course         | Authorization : Bearer <TOKEN> | create a course          | private |
+| PUT          | api/course/{courseId} | partial course | Authorization : Bearer <TOKEN> | update a specific course | private |
+| DELETE       | api/course/{courseId} | none           | Authorization : Bearer <TOKEN> | Delete a specific course | private |
 
 ### Course Feedback endpoint
 
-| Request Type | URL                                   | Request Body            | Request Header    | Action                                                        | Access  |
-| ------------ | ------------------------------------- | ----------------------- | ----------------- | ------------------------------------------------------------- | ------- |
-| GET          | api/coursefeedback/course/{courseId}  | none                    | Authorization[^2] | get a specific course feedback                                | private |
-| POST         | api//coursefeedback/course/{courseId} | course feedback         | Authorization[^2] | create a course feedback                                      | private |
-| PUT          | api/coursefeedback/course/{courseId}  | partial course feedback | Authorization[^2] | Update a specific course feedback                             | private |
-| DELETE       | api/coursefeedback/course/{courseId}  | none                    | Authorization[^2] | Delete course feedback                                        | private |
-| GET          | api/coursefeedbacks                   | none                    | Authorization[^2] | get all course feedbacks submitted by _student_               | private |
-| GET          | api/coursefeedbacks/course/{courseId} | none                    | Authorization[^3] | get all course feedbacks for a specific course _(instructor)_ | private |
+| Request Type | URL                                   | Request Body            | Request Header                 | Action                                                        | Access  |
+| ------------ | ------------------------------------- | ----------------------- | ------------------------------ | ------------------------------------------------------------- | ------- |
+| GET          | api/coursefeedback/course/{courseId}  | none                    | Authorization : Bearer <TOKEN> | get a specific course feedback                                | private |
+| POST         | api//coursefeedback/course/{courseId} | course feedback         | Authorization : Bearer <TOKEN> | create a course feedback                                      | private |
+| PUT          | api/coursefeedback/course/{courseId}  | partial course feedback | Authorization : Bearer <TOKEN> | Update a specific course feedback                             | private |
+| DELETE       | api/coursefeedback/course/{courseId}  | none                    | Authorization : Bearer <TOKEN> | Delete course feedback                                        | private |
+| GET          | api/coursefeedbacks                   | none                    | Authorization : Bearer <TOKEN> | get all course feedbacks submitted by _student_               | private |
+| GET          | api/coursefeedbacks/course/{courseId} | none                    | Authorization : Bearer <TOKEN> | get all course feedbacks for a specific course _(instructor)_ | private |
 
 ### Homework endpoint
 
-| Request Type | URL                       | Request Body     | Request Header       | Action                     | Access  |
-| ------------ | ------------------------- | ---------------- | -------------------- | -------------------------- | ------- |
-| GET          | api/homeworks             | none             | Authorization[^user] | get all homeworks          | private |
-| GET          | api/homework/{homeworkid} | none             | Authorization[^user] | get a specific homework    | private |
-| POST         | api/homework              | homework         | Authorization[^user] | create a homework          | private |
-| PUT          | api/homework/{homeworkid} | partial homework | Authorization[^user] | update a specific homework | private |
-| DELETE       | api/homework/{homeworkid} | none             | Authorization[^user] | Delete a specific homework | private |
+| Request Type | URL                       | Request Body     | Request Header                 | Action                     | Access  |
+| ------------ | ------------------------- | ---------------- | ------------------------------ | -------------------------- | ------- |
+| GET          | api/homeworks             | none             | Authorization : Bearer <TOKEN> | get all homeworks          | private |
+| GET          | api/homework/{homeworkid} | none             | Authorization : Bearer <TOKEN> | get a specific homework    | private |
+| POST         | api/homework              | homework         | Authorization : Bearer <TOKEN> | create a homework          | private |
+| PUT          | api/homework/{homeworkid} | partial homework | Authorization : Bearer <TOKEN> | update a specific homework | private |
+| DELETE       | api/homework/{homeworkid} | none             | Authorization : Bearer <TOKEN> | Delete a specific homework | private |
 
 ### Homework Feedback endpoint
 
-| Request Type | URL                                         | Request Body              | Request Header    | Action                                                            | Access  |
-| ------------ | ------------------------------------------- | ------------------------- | ----------------- | ----------------------------------------------------------------- | ------- |
-| GET          | api/homeworkfeedback/homework/{homeworkId}  | none                      | Authorization[^2] | get a specific homework feedback                                  | private |
-| POST         | api/homeworkfeedback/homework/{homeworkId}  | homework feedback         | Authorization[^2] | create a homework feedback                                        | private |
-| PUT          | api/homeworkfeedback/homework/{homeworkid}  | partial homework feedback | Authorization[^2] | update a specific homework feedback                               | private |
-| DELETE       | api/homeworkfeedback/homework/{homeworkId}  | none                      | Authorization[^2] | Delete a specific homework feedback                               | private |
-| GET          | api/homeworkfeedbacks                       | none                      | Authorization[^2] | get all homework feedbacks submitted by a _student_               | private |
-| GET          | api/homeworkfeedbacks/homework/{homeworkId} | none                      | Authorization[^3] | get all homework feedbacks for a specific homework _(instructor)_ | private |
-
-[^user]: Authorization : Bearer <JWT*TOKEN> [ \_instructor* or _student_ ]
-[^2]: Authorization : Bearer <JWT*TOKEN> [ \_student* ]
-[^3]: Authorization : Bearer <JWT*TOKEN> [ \_instructor* ]
+| Request Type | URL                                         | Request Body              | Request Header                 | Action                                                            | Access  |
+| ------------ | ------------------------------------------- | ------------------------- | ------------------------------ | ----------------------------------------------------------------- | ------- |
+| GET          | api/homeworkfeedback/homework/{homeworkId}  | none                      | Authorization : Bearer <TOKEN> | get a specific homework feedback                                  | private |
+| POST         | api/homeworkfeedback/homework/{homeworkId}  | homework feedback         | Authorization : Bearer <TOKEN> | create a homework feedback                                        | private |
+| PUT          | api/homeworkfeedback/homework/{homeworkid}  | partial homework feedback | Authorization : Bearer <TOKEN> | update a specific homework feedback                               | private |
+| DELETE       | api/homeworkfeedback/homework/{homeworkId}  | none                      | Authorization : Bearer <TOKEN> | Delete a specific homework feedback                               | private |
+| GET          | api/homeworkfeedbacks                       | none                      | Authorization : Bearer <TOKEN> | get all homework feedbacks submitted by a _student_               | private |
+| GET          | api/homeworkfeedbacks/homework/{homeworkId} | none                      | Authorization : Bearer <TOKEN> | get all homework feedbacks for a specific homework _(instructor)_ | private |
 
 ### Bonus
 
