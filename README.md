@@ -108,6 +108,11 @@ Our minimum viable product is a working database for:
 | GET          | api/homeworkfeedbacks                       | none                      | Authorization : Bearer TOKEN | get all homework feedbacks submitted by a _student_               | private |
 | GET          | api/homeworkfeedbacks/homework/{homeworkId} | none                      | Authorization : Bearer TOKEN | get all homework feedbacks for a specific homework _(instructor)_ | private |
 
+
+### Timeline
+Day 1 |Day 2	|Day 3	|Day 4	|Day 5  |
+Set up Spring Boot and Application Planning | Divided our work, Create models, start CRUD operations | Worked on Git Issue, Testing | Finish CRUD Operations, Fix dependencies | Worked Bonus task such as Course, Course Feedback|
+
 ### Bonus
 
 - A user can see their profile
