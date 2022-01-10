@@ -75,8 +75,7 @@ Our minimum viable product is a working database for:
 |POST         |api//coursefeedback/course/{courseId}|body          |Authorization Bearer TOKEN|create a single course feed    |private       |
 |PUT          |api/coursefeedback/course/{courseId}|body          |Authorization Bearer TOKEN| Update a single course feed |private       |
 |DELETE       |api/coursefeedback/course/{courseId}|none          |Authorization Bearer TOKEN|Delete single class feed|private       |
-| GET   | api/coursefeedbacks/course/{courseId} |none|Authorization Bearer TOKEN| get all course
-feedbacks(instructor)|private|
+| GET   | api/coursefeedbacks/course/{courseId} |none|Authorization Bearer TOKEN| get all course feedbacks(instructor)|private|
 
 ### Homework endpoint 
 | Request_Type| URL           |Request_Body  |Request_Header| Action       | Access       |
@@ -95,8 +94,7 @@ feedbacks(instructor)|private|
 |POST| api/homeworkfeedback/homework/{homeworkId}|homework single feedback |Authorization Bearer TOKEN |create a single homework feed|private|
 |PUT|api/homeworkfeedback/homework/{homeworkid}|none|Authorization Bearer TOKEN|feedback info|private|
 |DELETE | api/homeworkfeedback/homework/{homeworkId}|none | Authorization Bearer TOKEN| Delete single homework feed |private|
-| GET   | api/homeworkfeedbacks/homework/{homeworkId} |none|Authorization Bearer TOKEN| get all homework 
-feedbacks(instructor)|private|
+| GET   | api/homeworkfeedbacks/homework/{homeworkId} |none|Authorization Bearer TOKEN| get all homework feedbacks(instructor)|private|
 
 ### Bonus
 - A user can see their profile
