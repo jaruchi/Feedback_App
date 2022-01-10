@@ -21,13 +21,11 @@ Our minimum viable product is a working database for:
 - A user can login
 - A user can retrieve their data
 
-
 ## Course Model
-- As a user(instructor), I should be able to create a class.
-- As a user, I should be able to read a class.
-- As a user(instructor), I should be able to update a class.
-- As a user(instructor), I should be able to delete a class.
-
+- As a user(instructor), I should be able to create a course.
+- As a user, I should be able to read a course.
+- As a user(instructor), I should be able to update a course.
+- As a user(instructor), I should be able to delete a course.
 
 ## Homework Model
 - As a user(instructor), I should be able to create a homework.
@@ -35,15 +33,13 @@ Our minimum viable product is a working database for:
 - As a user(instructor), I should be able to update a homework.
 - As a user(instructor), I should be able to delete a homework.
 
-
 ## Course Feedback Model
 - As a user(student), I should be able to create feedback for a course.
 - As a user(student), I should be able to update course feedback.
 - As a user(student), I should be able to read feedback for a course.
 - As a user(student), I should be able to delete feedback for a course.
 - As a user(student), I should be able to see all my course feedbacks.
-- As a user(instructor), I should be able to see feedback for a course by all students. (future)
-
+- As a user(instructor), I should be able to see feedback for a course by all students.
 
 ## Homework Feedback Model
 - As a user(student), I should be able to create feedback for a homework.
@@ -51,9 +47,25 @@ Our minimum viable product is a working database for:
 - As a user(student), I should be able to read feedback for a homework.
 - As a user(student), I should be able to delete feedback for a homework.
 - As a user(student), I should be able to see all my homework feedbacks.
-- As a user(instructor), I should be able to see feedback for a homework by all students. (future)
+- As a user(instructor), I should be able to see feedback for a homework by all students.
 
-## EndPoint
+## EndPoints
+
+### User Auth endpoint
+| Request_Type| URL           |Request_Body  |Request_Header| Action       | Access       |
+| - | - | - | - | - | - |
+|POST| auth/users/register |register user |Authorization Bearer TOKEN |register user  |public|
+|POST| auth/users/login |login user |Authorization Bearer TOKEN |Login User |public|
+|GET| auth/users/profile|none|Authorization Bearer TOKEN|Retrieving user|private|
+
+### Course endpoint
+| Request_Type| URL           |Request Body  |Request Header| Action       | Access       |
+| - | - | - | - | - | - |
+| GET   | api/courses |none|Authorization Bearer TOKEN| get all course |private|
+|GET|api/course/{courseId}|none |Authorization Bearer TOKEN|get a single course|private|
+|POST| api/course|class single feedback |Authorization Bearer TOKEN |create a single course|private|
+|PUT|api/course/{courseId}|none|Authorization Bearer TOKEN|update course single course |private|
+|DELETE |api/course/{courseId}|none | Authorization Bearer TOKEN| Delete single course |private|
 
 ### Course Feedback endpoint 
 | Request_Type| URL                       |Request Body  |Request Header            | Action                 | Access       |
@@ -63,46 +75,33 @@ Our minimum viable product is a working database for:
 |POST         |api//coursefeedback/course/{courseId}|body          |Authorization Bearer TOKEN|create a single course feed    |private       |
 |PUT          |api/coursefeedback/course/{courseId}|body          |Authorization Bearer TOKEN| Update a single course feed |private       |
 |DELETE       |api/coursefeedback/course/{courseId}|none          |Authorization Bearer TOKEN|Delete single class feed|private       |
-
-### Course endpoint 
-| Request_Type| URL           |Request Body  |Request Header| Action       | Access       |
-| - | - | - | - | - | - |
-| GET   | api/courses |none|Authorization Bearer TOKEN| get all course |private|
-|GET|api/course/{courseId}|none |Authorization Bearer TOKEN|get a single course|private|
-|POST| api/course|class single feedback |Authorization Bearer TOKEN |create a single course|private|
-|PUT|api/course/{courseId}|none|Authorization Bearer TOKEN|update course single course |private|
-|DELETE |api/course/{courseId}|none | Authorization Bearer TOKEN| Delete single course |private|
+| GET   | api/coursefeedbacks/course/{courseId} |none|Authorization Bearer TOKEN| get all course
+feedbacks(instructor)|private|
 
 ### Homework endpoint 
 | Request_Type| URL           |Request_Body  |Request_Header| Action       | Access       |
 | - | - | - | - | - | - |
-| GET   | api/homework |none|Authorization Bearer TOKEN| get all homework |private|
+| GET   | api/homeworks |none|Authorization Bearer TOKEN| get all homeworks |private|
 |GET|api/homework/{homeworkid}|none |Authorization Bearer TOKEN|get a single homework |private|
 |POST| api/homework|homework single |Authorization Bearer TOKEN |create a single homework |private|
-|PUT|api/homework/{homeworkid}|none|Authorization Bearer TOKEN|homework info|private|
+|PUT|api/homework/{homeworkid}|none|Authorization Bearer TOKEN|update homework |private|
 |DELETE | api/homework/{homeworkid}|none | Authorization Bearer TOKEN| Delete single homework |private|
 
 ### Homework Feedback endpoint 
 | Request_Type| URL           |Request_Body  |Request_Header| Action       | Access       |
 | - | - | - | - | - | - |
-| GET   | api/homeworkfeedback |none|Authorization Bearer TOKEN| get all homework feed|private|
-|GET|api/homeworkfeedback/course/{homeworkId}|none |Authorization Bearer TOKEN|get a single homework homework|private|
+| GET   | api/homeworkfeedbacks |none|Authorization Bearer TOKEN| get all homework feed|private|
+|GET|api/homeworkfeedback/homework/{homeworkId}|none |Authorization Bearer TOKEN|get a single homework homework|private|
 |POST| api/homeworkfeedback/homework/{homeworkId}|homework single feedback |Authorization Bearer TOKEN |create a single homework feed|private|
-|PUT|api/homeworkfeedback/{homeworkid}|none|Authorization Bearer TOKEN|feedback info|private|
+|PUT|api/homeworkfeedback/homework/{homeworkid}|none|Authorization Bearer TOKEN|feedback info|private|
 |DELETE | api/homeworkfeedback/homework/{homeworkId}|none | Authorization Bearer TOKEN| Delete single homework feed |private|
-
-### User Auth endpoint 
-| Request_Type| URL           |Request_Body  |Request_Header| Action       | Access       |
-| - | - | - | - | - | - |
-|POST| auth/users/register |register user |Authorization Bearer TOKEN |register user  |private|
-|POST| auth/users/login |login user |Authorization Bearer TOKEN |Login User |private|
-|GET| auth/users/profile|none|Authorization Bearer TOKEN|Retrieving user|private|
+| GET   | api/homeworkfeedbacks/homework/{homeworkId} |none|Authorization Bearer TOKEN| get all homework 
+feedbacks(instructor)|private|
 
 ### Bonus
 - A user can see their profile
 - A user(instructor) can see all the feedbacks for a course given by students 
 - A user(instructor) can see all the feedbacks for a homework given by students 
-
 
 ### Hurdles
 - Merging the code was the greatest hurdle for us

@@ -49,13 +49,17 @@ public class CourseFeedBackService {
         MyUserDetails userDetails =
                 (MyUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Long userId = userDetails.getUser().getId();
+        String userRole = userDetails.getUser().getRole().toLowerCase();
+        if (!userRole.equals("student")) {
+            throw new InformationNotFoundException("-------not a valid user only student can delete a course feedback" +
+                    "---");
+        }
         Optional<CourseFeedBack> courseFeedBack = courseFeedBackRepository.findByUserIdAndCourseId(userId, courseId);
 
         if (courseFeedBack.isEmpty()) {
             throw new InformationNotFoundException("course feedback for course : " + course.get().getTopic() +
                     " not found");
         }
-        //CourseTitleResponse courseTitleResponse = new CourseTitleResponse(courseFeedBack.get());
 
         return courseFeedBack;
     }
@@ -73,7 +77,7 @@ public class CourseFeedBackService {
                 (MyUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Long userId = userDetails.getUser().getId();
         String userRole = userDetails.getUser().getRole().toLowerCase();
-        if (!userRole.equals("instructor")) {
+        if (!userRole.equals("student")) {
             throw new InformationNotFoundException("-------not a valid user only student can create a course " +
                     "feedback---");
         }
@@ -101,7 +105,7 @@ public class CourseFeedBackService {
                 (MyUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Long userId = userDetails.getUser().getId();
         String userRole = userDetails.getUser().getRole().toLowerCase();
-        if (!userRole.equals("instructor")) {
+        if (!userRole.equals("student")) {
             throw new InformationNotFoundException("-------not a valid user only student can update a course feedback" +
                     "---");
         }
@@ -133,7 +137,7 @@ public class CourseFeedBackService {
                 (MyUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Long userId = userDetails.getUser().getId();
         String userRole = userDetails.getUser().getRole().toLowerCase();
-        if (!userRole.equals("instructor")) {
+        if (!userRole.equals("student")) {
             throw new InformationNotFoundException("-------not a valid user only student can delete a course feedback" +
                     "---");
         }
@@ -154,7 +158,11 @@ public class CourseFeedBackService {
         MyUserDetails userDetails =
                 (MyUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Long userId = userDetails.getUser().getId();
-
+        String userRole = userDetails.getUser().getRole().toLowerCase();
+        if (!userRole.equals("student")) {
+            throw new InformationNotFoundException("-------not a valid user only student can delete a course feedback" +
+                    "---");
+        }
 
         List<CourseFeedBack> courseFeedBack = courseFeedBackRepository.findByUserId(userId);
 

@@ -48,6 +48,11 @@ public class HomeworkFeedbackService {
         MyUserDetails userDetails =
                 (MyUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Long userId = userDetails.getUser().getId();
+        String userRole = userDetails.getUser().getRole().toLowerCase();
+        if (!userRole.equals("student")) {
+            throw new InformationNotFoundException("-------not a valid user only student can see a homework" +" " +
+                    "feedback ---");
+        }
         Optional<HomeworkFeedback> homeworkFeedback = homeworkFeedbackRepository.findByUserIdAndHomeworkId(userId, homeworkId);
 
         if (homeworkFeedback.isEmpty()) {
@@ -70,7 +75,7 @@ public class HomeworkFeedbackService {
                 (MyUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Long userId = userDetails.getUser().getId();
         String userRole = userDetails.getUser().getRole().toLowerCase();
-        if (!userRole.equals("instructor")) {
+        if (!userRole.equals("student")) {
             throw new InformationNotFoundException("-------not a valid user only student can create a homework" +" " +
                     "feedback ---");
         }
@@ -79,6 +84,8 @@ public class HomeworkFeedbackService {
             throw new InformationExistException("homework feed back with name " + homeworkFeedback.get().getTitle()
                     + " " + "already exists");
         }
+        // if (homeworkFeedbackObject.getTitle() == null ||   homeworkFeedbackObject.getTitle().isBlank())
+
         homeworkFeedbackObject.setHomework(homework.get());
         homeworkFeedbackObject.setUser(userDetails.getUser());
         return homeworkFeedbackRepository.save(homeworkFeedbackObject);
@@ -97,7 +104,7 @@ public class HomeworkFeedbackService {
                 (MyUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Long userId = userDetails.getUser().getId();
         String userRole = userDetails.getUser().getRole().toLowerCase();
-        if (!userRole.equals("instructor")) {
+        if (!userRole.equals("student")) {
             throw new InformationNotFoundException("-------not a valid user only student can update a homework " +
                     "feedback----");
         }
@@ -131,7 +138,7 @@ public class HomeworkFeedbackService {
                 (MyUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Long userId = userDetails.getUser().getId();
         String userRole = userDetails.getUser().getRole().toLowerCase();
-        if (!userRole.equals("instructor")) {
+        if (!userRole.equals("student")) {
             throw new InformationNotFoundException("-------not a valid user only student can delete a homework " +
                     "feedback----");
         }
@@ -141,17 +148,23 @@ public class HomeworkFeedbackService {
             throw new InformationNotFoundException("homework feedback for homework : " + homework.get().getName() +
                     " not found");
         }
-         homeworkFeedbackRepository.deleteById(homeworkFeedback.get());
+         homeworkFeedbackRepository.deleteById(homeworkFeedback.get().getId());
         return homeworkFeedback;
     }
 
-    // to get all homework feedbacks for a homework
+    // to get all homework feedbacks for a homework by a student
     // http://localhost:9092/api/homeworkfeedbacks/
     public List<HomeworkFeedbackResponse> getHomeworkFeedbacks() {
         LOGGER.info("calling getHomeworkFeedbacks method from service");
         MyUserDetails userDetails =
                 (MyUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Long userId = userDetails.getUser().getId();
+        String userRole = userDetails.getUser().getRole().toLowerCase();
+        if (!userRole.equals("student")) {
+            throw new InformationNotFoundException("-------not a valid user only student can see all homework " +
+                    "feedbacks" +
+                    "---");
+        }
 
         List<HomeworkFeedback> homeworkFeedback = homeworkFeedbackRepository.findByUserId(userId);
 
