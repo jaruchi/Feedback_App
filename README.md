@@ -2,17 +2,17 @@
 
 ### Introduction
 
-This App allows a user(students) to provide feedbacks for the daily class they are attending and everyday homework.
+This App allows a user(student) to provide feedbacks for the daily class they are attending and everyday homework.
 
 ER Diagram
 ![Feedback](assets/erd.png)
 
 ### MVP
-Our minimum viable product is a working database models:
-User, Course, CourseFeedback, Homework, HomeworkFeedback.
-All the models except User will have the four CRUD endpoints created using REST conventions.
-When invalid requests are made, the user will be notified by proper error messages.
-A user can register and login to perform various operations.
+Our minimum viable product is a working database for:
+- User, Course, CourseFeedback, Homework, HomeworkFeedback models.
+- All the models except User will have the four CRUD endpoints created using REST conventions.
+- When invalid requests are made, the user will be notified by proper error messages.
+- A user can register and login to perform various operations.
 
 ### User Stories
 
@@ -107,8 +107,8 @@ A user can register and login to perform various operations.
 
 ### Bonus
 - A user can see their profile
-- A user(instructor) can see all the feedbacks given by users for a particular course 
-- A user(instructor) can see all the feedbacks given by users for a particular homework
+- A user(instructor) can see all the feedbacks given by a students for a course 
+- A user(instructor) can see all the feedbacks given by a students for a homework
 
 
 ### Hurdles
@@ -118,7 +118,7 @@ A user can register and login to perform various operations.
 
 ### Wins
 - Got confidence in working with Spring Boot Framework
-- Learned a lot about git merging/rebasing, creating branches, solving merge conflicts
+- Learned a lot about git merging/rebase, creating branches, solving merge conflicts
 
 ### Future Implementations
 - A user can see all the given feedbacks related to course and homework at same place
@@ -143,7 +143,7 @@ A user can register and login to perform various operations.
   proper port number (9092 recommended) and 4 & 5 to be your postgres username and password
 
 ### Resources
-https://www.w3docs.com/snippets/git/how-to-rebase-git-branch.html
-Lesson videos
+- [git rebase] (https://www.w3docs.com/snippets/git/how-to-rebase-git-branch.html)
+- Lesson videos
 
 
