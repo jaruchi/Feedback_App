@@ -68,49 +68,49 @@ Our minimum viable product is a working database for:
 
 ### Course endpoint
 
-| Request Type | URL                   | Request Body   | Request Header      | Action                   | Access  |
-| ------------ | --------------------- | -------------- | ------------------- | ------------------------ | ------- |
-| GET          | api/courses           | none           | AuAuthorization[^1] | get all courses          | private |
-| GET          | api/course/{courseId} | none           | AuAuthorization[^1] | get a specific course    | private |
-| POST         | api/course            | course         | AuAuthorization[^1] | create a course          | private |
-| PUT          | api/course/{courseId} | partial course | AuAuthorization[^1] | update a specific course | private |
-| DELETE       | api/course/{courseId} | none           | AuAuthorization[^1] | Delete a specific course | private |
+| Request Type | URL                   | Request Body   | Request Header    | Action                   | Access  |
+| ------------ | --------------------- | -------------- | ----------------- | ------------------------ | ------- |
+| GET          | api/courses           | none           | Authorization[^1] | get all courses          | private |
+| GET          | api/course/{courseId} | none           | Authorization[^1] | get a specific course    | private |
+| POST         | api/course            | course         | Authorization[^1] | create a course          | private |
+| PUT          | api/course/{courseId} | partial course | Authorization[^1] | update a specific course | private |
+| DELETE       | api/course/{courseId} | none           | Authorization[^1] | Delete a specific course | private |
 
 ### Course Feedback endpoint
 
-| Request Type | URL                                   | Request Body            | Request Header      | Action                                                        | Access  |
-| ------------ | ------------------------------------- | ----------------------- | ------------------- | ------------------------------------------------------------- | ------- |
-| GET          | api/coursefeedback/course/{courseId}  | none                    | AuAuthorization[^2] | get a specific course feedback                                | private |
-| POST         | api//coursefeedback/course/{courseId} | course feedback         | AuAuthorization[^2] | create a course feedback                                      | private |
-| PUT          | api/coursefeedback/course/{courseId}  | partial course feedback | AuAuthorization[^2] | Update a specific course feedback                             | private |
-| DELETE       | api/coursefeedback/course/{courseId}  | none                    | AuAuthorization[^2] | Delete course feedback                                        | private |
-| GET          | api/coursefeedbacks                   | none                    | AuAuthorization[^2] | get all course feedbacks submitted by _student_               | private |
-| GET          | api/coursefeedbacks/course/{courseId} | none                    | AuAuthorization[^3] | get all course feedbacks for a specific course _(instructor)_ | private |
+| Request Type | URL                                   | Request Body            | Request Header    | Action                                                        | Access  |
+| ------------ | ------------------------------------- | ----------------------- | ----------------- | ------------------------------------------------------------- | ------- |
+| GET          | api/coursefeedback/course/{courseId}  | none                    | Authorization[^2] | get a specific course feedback                                | private |
+| POST         | api//coursefeedback/course/{courseId} | course feedback         | Authorization[^2] | create a course feedback                                      | private |
+| PUT          | api/coursefeedback/course/{courseId}  | partial course feedback | Authorization[^2] | Update a specific course feedback                             | private |
+| DELETE       | api/coursefeedback/course/{courseId}  | none                    | Authorization[^2] | Delete course feedback                                        | private |
+| GET          | api/coursefeedbacks                   | none                    | Authorization[^2] | get all course feedbacks submitted by _student_               | private |
+| GET          | api/coursefeedbacks/course/{courseId} | none                    | Authorization[^3] | get all course feedbacks for a specific course _(instructor)_ | private |
 
 ### Homework endpoint
 
-| Request Type | URL                       | Request Body     | Request Header      | Action                     | Access  |
-| ------------ | ------------------------- | ---------------- | ------------------- | -------------------------- | ------- |
-| GET          | api/homeworks             | none             | AuAuthorization[^1] | get all homeworks          | private |
-| GET          | api/homework/{homeworkid} | none             | AuAuthorization[^1] | get a specific homework    | private |
-| POST         | api/homework              | homework         | AuAuthorization[^1] | create a homework          | private |
-| PUT          | api/homework/{homeworkid} | partial homework | AuAuthorization[^1] | update a specific homework | private |
-| DELETE       | api/homework/{homeworkid} | none             | AuAuthorization[^1] | Delete a specific homework | private |
+| Request Type | URL                       | Request Body     | Request Header    | Action                     | Access  |
+| ------------ | ------------------------- | ---------------- | ----------------- | -------------------------- | ------- |
+| GET          | api/homeworks             | none             | Authorization[^1] | get all homeworks          | private |
+| GET          | api/homework/{homeworkid} | none             | Authorization[^1] | get a specific homework    | private |
+| POST         | api/homework              | homework         | Authorization[^1] | create a homework          | private |
+| PUT          | api/homework/{homeworkid} | partial homework | Authorization[^1] | update a specific homework | private |
+| DELETE       | api/homework/{homeworkid} | none             | Authorization[^1] | Delete a specific homework | private |
 
 ### Homework Feedback endpoint
 
-| Request Type | URL                                         | Request Body              | Request Header      | Action                                                            | Access  |
-| ------------ | ------------------------------------------- | ------------------------- | ------------------- | ----------------------------------------------------------------- | ------- |
-| GET          | api/homeworkfeedback/homework/{homeworkId}  | none                      | AuAuthorization[^2] | get a specific homework feedback                                  | private |
-| POST         | api/homeworkfeedback/homework/{homeworkId}  | homework feedback         | AuAuthorization[^2] | create a homework feedback                                        | private |
-| PUT          | api/homeworkfeedback/homework/{homeworkid}  | partial homework feedback | AuAuthorization[^2] | update a specific homework feedback                               | private |
-| DELETE       | api/homeworkfeedback/homework/{homeworkId}  | none                      | AuAuthorization[^2] | Delete a specific homework feedback                               | private |
-| GET          | api/homeworkfeedbacks                       | none                      | AuAuthorization[^2] | get all homework feedbacks submitted by a _student_               | private |
-| GET          | api/homeworkfeedbacks/homework/{homeworkId} | none                      | AuAuthorization[^3] | get all homework feedbacks for a specific homework _(instructor)_ | private |
+| Request Type | URL                                         | Request Body              | Request Header    | Action                                                            | Access  |
+| ------------ | ------------------------------------------- | ------------------------- | ----------------- | ----------------------------------------------------------------- | ------- |
+| GET          | api/homeworkfeedback/homework/{homeworkId}  | none                      | Authorization[^2] | get a specific homework feedback                                  | private |
+| POST         | api/homeworkfeedback/homework/{homeworkId}  | homework feedback         | Authorization[^2] | create a homework feedback                                        | private |
+| PUT          | api/homeworkfeedback/homework/{homeworkid}  | partial homework feedback | Authorization[^2] | update a specific homework feedback                               | private |
+| DELETE       | api/homeworkfeedback/homework/{homeworkId}  | none                      | Authorization[^2] | Delete a specific homework feedback                               | private |
+| GET          | api/homeworkfeedbacks                       | none                      | Authorization[^2] | get all homework feedbacks submitted by a _student_               | private |
+| GET          | api/homeworkfeedbacks/homework/{homeworkId} | none                      | Authorization[^3] | get all homework feedbacks for a specific homework _(instructor)_ | private |
 
-[^1]: Authorization : Bearer <JWT\*TOKEN> [ _instructor_ or _student_ ]
-[^2]: Authorization : Bearer <JWT\*TOKEN> [ _student_ ]
-[^3]: Authorization : Bearer <JWT\*TOKEN> [ _instructor_ ]
+[^1]: Authorization : Bearer <JWT*TOKEN> [ \_instructor* or _student_ ]
+[^2]: Authorization : Bearer <JWT*TOKEN> [ \_student* ]
+[^3]: Authorization : Bearer <JWT*TOKEN> [ \_instructor* ]
 
 ### Bonus
 
