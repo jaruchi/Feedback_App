@@ -107,8 +107,8 @@ Our minimum viable product is a working database for:
 
 ### Bonus
 - A user can see their profile
-- A user(instructor) can see all the feedbacks given by a students for a course 
-- A user(instructor) can see all the feedbacks given by a students for a homework
+- A user(instructor) can see all the feedbacks for a course given by students 
+- A user(instructor) can see all the feedbacks for a homework given by students 
 
 
 ### Hurdles
@@ -118,13 +118,14 @@ Our minimum viable product is a working database for:
 
 ### Wins
 - Got confidence in working with Spring Boot Framework
+- Learned how to customize Json response
 - Learned a lot about git merging/rebase, creating branches, solving merge conflicts
 
 ### Future Implementations
 - A user can see all the given feedbacks related to course and homework at same place
 - A user can update their profile
 - Add unit tests
-- Allow a user to update their password
+- Allow a user to update their password, profile
 
 ### Technologies Used
 - Lucidchart - to create the ERD
