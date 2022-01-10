@@ -52,14 +52,14 @@ Our minimum viable product is a working database for:
 ## EndPoints
 
 ### User Auth endpoint
-| Request_Type| URL           |Request_Body  |Request_Header| Action       | Access       |
+| Request Type| URL           |Request Body  |Request Header| Action       | Access       |
 | - | - | - | - | - | - |
 |POST| auth/users/register |register user |Authorization Bearer TOKEN |register user  |public|
 |POST| auth/users/login |login user |Authorization Bearer TOKEN |Login User |public|
 |GET| auth/users/profile|none|Authorization Bearer TOKEN|Retrieving user|private|
 
 ### Course endpoint
-| Request_Type| URL           |Request Body  |Request Header| Action       | Access       |
+| Request Type| URL           |Request Body  |Request Header| Action       | Access       |
 | - | - | - | - | - | - |
 | GET   | api/courses |none|Authorization Bearer TOKEN| get all course |private|
 |GET|api/course/{courseId}|none |Authorization Bearer TOKEN|get a single course|private|
@@ -68,7 +68,7 @@ Our minimum viable product is a working database for:
 |DELETE |api/course/{courseId}|none | Authorization Bearer TOKEN| Delete single course |private|
 
 ### Course Feedback endpoint 
-| Request_Type| URL                       |Request Body  |Request Header            | Action                 | Access       |
+| Request Type| URL                       |Request Body  |Request Header            | Action                 | Access       |
 | - | - | - | - | - | - |
 | GET         |api/coursefeedbacks                 |none          |Authorization Bearer TOKEN| get all course feed     |private       |
 |GET          |api/coursefeedback/course/{courseId}|none          |Authorization Bearer TOKEN|get a single course feed |private       |
@@ -78,7 +78,7 @@ Our minimum viable product is a working database for:
 | GET   | api/coursefeedbacks/course/{courseId} |none|Authorization Bearer TOKEN| get all course feedbacks(instructor)|private|
 
 ### Homework endpoint 
-| Request_Type| URL           |Request_Body  |Request_Header| Action       | Access       |
+| Request Type| URL           |Request Body  |Request Header| Action       | Access       |
 | - | - | - | - | - | - |
 | GET   | api/homeworks |none|Authorization Bearer TOKEN| get all homeworks |private|
 |GET|api/homework/{homeworkid}|none |Authorization Bearer TOKEN|get a single homework |private|
@@ -87,7 +87,7 @@ Our minimum viable product is a working database for:
 |DELETE | api/homework/{homeworkid}|none | Authorization Bearer TOKEN| Delete single homework |private|
 
 ### Homework Feedback endpoint 
-| Request_Type| URL           |Request_Body  |Request_Header| Action       | Access       |
+| Request Type| URL           |Request Body  |Request Header| Action       | Access       |
 | - | - | - | - | - | - |
 | GET   | api/homeworkfeedbacks |none|Authorization Bearer TOKEN| get all homework feed|private|
 |GET|api/homeworkfeedback/homework/{homeworkId}|none |Authorization Bearer TOKEN|get a single homework homework|private|
