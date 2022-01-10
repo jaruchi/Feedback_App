@@ -60,21 +60,21 @@ Our minimum viable product is a working database for:
 
 ### User Auth endpoint
 
-| Request Type | URL                 | Request Body               | Request Header    | Action          | Access  |
-| ------------ | ------------------- | -------------------------- | ----------------- | --------------- | ------- |
-| POST         | auth/users/register | user (instructor /student) |                   | register user   | public  |
-| POST         | auth/users/login    | user login info            |                   | Login User      | public  |
-| GET          | auth/users/profile  | none                       | Authorization[^1] | Retrieving user | private |
+| Request Type | URL                 | Request Body               | Request Header       | Action          | Access  |
+| ------------ | ------------------- | -------------------------- | -------------------- | --------------- | ------- |
+| POST         | auth/users/register | user (instructor /student) |                      | register user   | public  |
+| POST         | auth/users/login    | user login info            |                      | Login User      | public  |
+| GET          | auth/users/profile  | none                       | Authorization[^user] | Retrieving user | private |
 
 ### Course endpoint
 
-| Request Type | URL                   | Request Body   | Request Header    | Action                   | Access  |
-| ------------ | --------------------- | -------------- | ----------------- | ------------------------ | ------- |
-| GET          | api/courses           | none           | Authorization[^1] | get all courses          | private |
-| GET          | api/course/{courseId} | none           | Authorization[^1] | get a specific course    | private |
-| POST         | api/course            | course         | Authorization[^1] | create a course          | private |
-| PUT          | api/course/{courseId} | partial course | Authorization[^1] | update a specific course | private |
-| DELETE       | api/course/{courseId} | none           | Authorization[^1] | Delete a specific course | private |
+| Request Type | URL                   | Request Body   | Request Header       | Action                   | Access  |
+| ------------ | --------------------- | -------------- | -------------------- | ------------------------ | ------- |
+| GET          | api/courses           | none           | Authorization[^user] | get all courses          | private |
+| GET          | api/course/{courseId} | none           | Authorization[^user] | get a specific course    | private |
+| POST         | api/course            | course         | Authorization[^user] | create a course          | private |
+| PUT          | api/course/{courseId} | partial course | Authorization[^user] | update a specific course | private |
+| DELETE       | api/course/{courseId} | none           | Authorization[^user] | Delete a specific course | private |
 
 ### Course Feedback endpoint
 
@@ -89,13 +89,13 @@ Our minimum viable product is a working database for:
 
 ### Homework endpoint
 
-| Request Type | URL                       | Request Body     | Request Header    | Action                     | Access  |
-| ------------ | ------------------------- | ---------------- | ----------------- | -------------------------- | ------- |
-| GET          | api/homeworks             | none             | Authorization[^1] | get all homeworks          | private |
-| GET          | api/homework/{homeworkid} | none             | Authorization[^1] | get a specific homework    | private |
-| POST         | api/homework              | homework         | Authorization[^1] | create a homework          | private |
-| PUT          | api/homework/{homeworkid} | partial homework | Authorization[^1] | update a specific homework | private |
-| DELETE       | api/homework/{homeworkid} | none             | Authorization[^1] | Delete a specific homework | private |
+| Request Type | URL                       | Request Body     | Request Header       | Action                     | Access  |
+| ------------ | ------------------------- | ---------------- | -------------------- | -------------------------- | ------- |
+| GET          | api/homeworks             | none             | Authorization[^user] | get all homeworks          | private |
+| GET          | api/homework/{homeworkid} | none             | Authorization[^user] | get a specific homework    | private |
+| POST         | api/homework              | homework         | Authorization[^user] | create a homework          | private |
+| PUT          | api/homework/{homeworkid} | partial homework | Authorization[^user] | update a specific homework | private |
+| DELETE       | api/homework/{homeworkid} | none             | Authorization[^user] | Delete a specific homework | private |
 
 ### Homework Feedback endpoint
 
@@ -108,7 +108,7 @@ Our minimum viable product is a working database for:
 | GET          | api/homeworkfeedbacks                       | none                      | Authorization[^2] | get all homework feedbacks submitted by a _student_               | private |
 | GET          | api/homeworkfeedbacks/homework/{homeworkId} | none                      | Authorization[^3] | get all homework feedbacks for a specific homework _(instructor)_ | private |
 
-[^1]: Authorization : Bearer <JWT*TOKEN> [ \_instructor* or _student_ ]
+[^user]: Authorization : Bearer <JWT*TOKEN> [ \_instructor* or _student_ ]
 [^2]: Authorization : Bearer <JWT*TOKEN> [ \_student* ]
 [^3]: Authorization : Bearer <JWT*TOKEN> [ \_instructor* ]
 
