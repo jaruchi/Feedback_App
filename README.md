@@ -108,7 +108,7 @@ Our minimum viable product is a working database for:
 | GET          | api/homeworkfeedbacks                       | none                      | Authorization Bearer TOKEN | get all homework feedbacks submitted by a _student_               | private |
 | GET          | api/homeworkfeedbacks/homework/{homeworkId} | none                      | Authorization Bearer TOKEN | get all homework feedbacks for a specific homework _(instructor)_ | private |
 
-[^1] Authorization : Bearer <JWT_TOKEN> ==instructor== ==student==
+[^1]: Authorization : Bearer <JWT_TOKEN> ==instructor== ==student==
 
 ### Bonus
 
