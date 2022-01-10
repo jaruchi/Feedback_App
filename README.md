@@ -60,11 +60,11 @@ Our minimum viable product is a working database for:
 
 ### User Auth endpoint
 
-| Request Type | URL                 | Request Body               | Request Header      | Action          | Access  |
-| ------------ | ------------------- | -------------------------- | ------------------- | --------------- | ------- |
-| POST         | auth/users/register | user (instructor /student) |                     | register user   | public  |
-| POST         | auth/users/login    | user login info            |                     | Login User      | public  |
-| GET          | auth/users/profile  | none                       | AuAuthorization[^1] | Retrieving user | private |
+| Request Type | URL                 | Request Body               | Request Header    | Action          | Access  |
+| ------------ | ------------------- | -------------------------- | ----------------- | --------------- | ------- |
+| POST         | auth/users/register | user (instructor /student) |                   | register user   | public  |
+| POST         | auth/users/login    | user login info            |                   | Login User      | public  |
+| GET          | auth/users/profile  | none                       | Authorization[^1] | Retrieving user | private |
 
 ### Course endpoint
 
