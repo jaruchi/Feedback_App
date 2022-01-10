@@ -11,10 +11,11 @@ ER Diagram
 
 Our minimum viable product is a working database for:
 
-- User, Course, CourseFeedback, Homework, HomeworkFeedback models.
+- User, Course, CourseFeedback.
 - All the models except User will have the four CRUD endpoints created using REST conventions.
 - When invalid requests are made, the user will be notified by proper error messages.
 - A user can register and login to perform various operations.
+- Add working Database for Homework, HomeworkFeedback models.
 
 ### User Stories
 
